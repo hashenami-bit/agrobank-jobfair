@@ -177,7 +177,7 @@ export default function Vacancies() {
                     {bizCard.title}
                   </h3>
 
-                  <p className={`text-sm leading-relaxed font-light mb-8 ${isActive ? 'text-[var(--text-muted)]' : 'text-[var(--text-muted)]'}`}>
+                  <p className={`text-sm leading-relaxed font-normal mb-8 ${isActive ? 'text-[var(--text-muted)]' : 'text-[var(--text-muted)]'}`}>
                     {bizCard.description}
                   </p>
 

@@ -113,7 +113,7 @@ export default function Pricing() {
                 <h3 className={`font-medium tracking-tight mb-2 ${tier.isActive ? 'text-2xl text-rose-500' : 'text-xl'}`}>
                   {tier.name}
                 </h3>
-                <p className="text-xs text-[var(--text-muted)] leading-relaxed font-light min-h-[40px]">
+                <p className="text-xs text-[var(--text-muted)] leading-relaxed font-normal min-h-[40px]">
                   {tier.description}
                 </p>
               </div>
@@ -136,7 +136,7 @@ export default function Pricing() {
                       icon="solar:check-circle-linear" 
                       class={`text-lg mt-0.5 ${tier.isActive ? 'text-rose-500' : 'text-[var(--text-muted)]'}`}
                     ></iconify-icon>
-                    <span className="font-light">{feature}</span>
+                    <span className="font-normal">{feature}</span>
                   </li>
                 ))}
               </ul>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Cctv, Satellite, Mic, BarChart3, ArrowUpRight, Sparkles } from 'lucide-react';
 import { useReveal } from '../../hooks/useReveal';
 import MaskedText from '../../components/MaskedText';
@@ -133,7 +133,7 @@ export default function Projects() {
                   </h3>
 
                   {/* Description */}
-                  <p className={`text-sm leading-relaxed font-light mb-5 text-center text-[var(--text-muted)]`}>
+                  <p className={`text-sm leading-relaxed font-normal mb-5 text-center text-[var(--text-muted)]`}>
                     {p.description}
                   </p>
 

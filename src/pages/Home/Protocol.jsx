@@ -109,7 +109,7 @@ export default function Protocol() {
                   {feature.title}
                 </h3>
                 
-                <p className={`text-xs leading-relaxed font-light ${feature.isActive ? 'text-[var(--text-muted)] mb-8' : 'text-[var(--text-muted)]'}`}>
+                <p className={`text-xs leading-relaxed font-normal ${feature.isActive ? 'text-[var(--text-muted)] mb-8' : 'text-[var(--text-muted)]'}`}>
                   {feature.description}
                 </p>
 

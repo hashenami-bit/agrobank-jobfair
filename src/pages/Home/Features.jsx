@@ -72,7 +72,7 @@ export default function Features() {
                     <iconify-icon icon={feature.icon} class="text-2xl text-[var(--text-muted)] group-hover:text-rose-500 transition-colors"></iconify-icon>
                   </div>
                   <h3 className="text-2xl text-[var(--text)] font-medium tracking-tight mb-3 group-hover:text-rose-500 transition-colors">{feature.title}</h3>
-                  <p className="text-sm text-[var(--text-muted)] leading-relaxed font-light">{feature.description}</p>
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed font-normal">{feature.description}</p>
                 </div>
               </div>
               

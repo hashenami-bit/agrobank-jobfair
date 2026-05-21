@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+﻿import { ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useReveal } from '../../hooks/useReveal';
 import Typewriter from '../../components/Typewriter';
 import { useSlide } from '../../contexts/SlideContext';
@@ -95,7 +95,7 @@ export default function Hero() {
         <div className="col-span-12 md:col-span-5 flex flex-col justify-center relative z-10 overflow-hidden -mt-20 md:mt-0">
           <div key={slideIndex} className="animate-slide-in">
             <div className="flex items-center space-x-4 mb-4">
-              <span className="text-2xl font-light" style={{ color: accent }}>{slide.num}</span>
+              <span className="text-2xl font-normal" style={{ color: accent }}>{slide.num}</span>
               <div className="w-8 h-px bg-[var(--border)]"></div>
               <button
                 type="button"

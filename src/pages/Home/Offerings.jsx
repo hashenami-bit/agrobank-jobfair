@@ -112,7 +112,7 @@ export default function Offerings() {
                   </h3>
 
                   {/* Description */}
-                  <p className={`text-sm leading-relaxed font-light mb-5 text-center ${isActive ? 'text-[var(--text-muted)]' : 'text-[var(--text-muted)]'}`}>
+                  <p className={`text-sm leading-relaxed font-normal mb-5 text-center ${isActive ? 'text-[var(--text-muted)]' : 'text-[var(--text-muted)]'}`}>
                     {o.description}
                   </p>
 

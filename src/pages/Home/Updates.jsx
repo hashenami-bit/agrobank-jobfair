@@ -40,7 +40,7 @@ export default function Updates() {
           </div>
           <div className="text-[0.65rem] text-rose-500 tracking-widest uppercase mb-3">Oct 21, 2024</div>
           <h3 className="text-2xl text-[var(--text)] font-medium tracking-tight mb-3 group-hover:text-rose-500 transition-colors">Crypto Events » Blockchain Hub Global</h3>
-          <p className="text-sm text-[var(--text-muted)] font-light leading-relaxed max-w-2xl mb-6 flex-grow">
+          <p className="text-sm text-[var(--text-muted)] font-normal leading-relaxed max-w-2xl mb-6 flex-grow">
             Join the core NovaChain development team at the upcoming Blockchain Hub Global event in Singapore. We'll be discussing the future of Layer 2 derivatives and our roadmap for Q4.
           </p>
           <div>

@@ -61,7 +61,7 @@ export default function FAQ({ faqs, accent = '#f43f5e', label = 'FAQ', heading }
                   open ? 'max-h-96 pb-6 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <p className="text-sm text-[var(--text-muted)] font-light leading-relaxed">
+                <p className="text-sm text-[var(--text-muted)] font-normal leading-relaxed">
                   {faq.answer}
                 </p>
               </div>
