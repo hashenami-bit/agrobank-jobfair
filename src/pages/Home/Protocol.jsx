@@ -1,4 +1,4 @@
-import { useReveal } from '../../hooks/useReveal';
+﻿import { useReveal } from '../../hooks/useReveal';
 import MaskedText from '../../components/MaskedText';
 
 export default function Protocol() {
@@ -11,7 +11,7 @@ export default function Protocol() {
       badge: 'Pro',
       badgeColor: 'text-rose-500',
       icon: 'solar:wallet-linear',
-      iconColor: 'text-white/70 group-hover:text-white',
+      iconColor: 'text-[var(--text-muted)] group-hover:text-[var(--text)]',
       title: 'DEX',
       description: 'Trade USDC and USDT Cross-Margined Perpetual Contracts',
       isActive: false
@@ -19,7 +19,7 @@ export default function Protocol() {
     {
       id: 'staking',
       badge: 'Staking',
-      badgeColor: 'text-white',
+      badgeColor: 'text-[var(--text)]',
       badgeBorder: 'border-rose-500/30',
       icon: 'solar:chart-square-linear',
       iconColor: 'text-rose-500 drop-shadow-[0_0_15px_rgba(244,63,94,0.5)]',
@@ -47,10 +47,10 @@ export default function Protocol() {
   };
 
   return (
-    <section className="w-full max-w-7xl py-32 px-6 relative border-b border-white/[0.05]">
+    <section className="w-full max-w-7xl py-32 px-6 relative border-b border-[var(--border)]">
       {/* Grid Lines inside section */}
-      <div className="absolute top-0 bottom-0 left-1/3 w-px bg-white/[0.03] -z-10"></div>
-      <div className="absolute top-0 bottom-0 right-1/3 w-px bg-white/[0.03] -z-10"></div>
+      <div className="absolute top-0 bottom-0 left-1/3 w-px bg-[var(--bg-soft)] -z-10"></div>
+      <div className="absolute top-0 bottom-0 right-1/3 w-px bg-[var(--bg-soft)] -z-10"></div>
 
       <div ref={headerRef} className="text-center mb-24">
         <div className="flex items-center justify-center space-x-4 mb-4 text-[0.65rem] tracking-widest uppercase text-rose-500 font-medium clip-slide delay-100">
@@ -58,7 +58,7 @@ export default function Protocol() {
           <div className="w-12 h-px bg-rose-500/50"></div>
           <span>Ecosystem</span>
         </div>
-        <h2 className="text-4xl md:text-5xl text-white font-medium tracking-tight">
+        <h2 className="text-4xl md:text-5xl text-[var(--text)] font-medium tracking-tight">
           <MaskedText text="NovaChain Protocol" delayStart={200} stagger={100} />
         </h2>
       </div>
@@ -67,11 +67,11 @@ export default function Protocol() {
       <div ref={gridRef} className="relative max-w-5xl mx-auto holodex-container">
         
         {/* Drawing the connector lines */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-white/20 clip-slide delay-200"></div>
-        <div className="absolute top-12 left-[16.66%] right-[16.66%] h-px bg-white/20 clip-slide delay-300"></div>
-        <div className="absolute top-12 left-[16.66%] w-px h-12 bg-white/20 clip-slide delay-400"></div>
-        <div className="absolute top-12 left-1/2 w-px h-12 bg-white/20 -translate-x-1/2 clip-slide delay-400"></div>
-        <div className="absolute top-12 right-[16.66%] w-px h-12 bg-white/20 clip-slide delay-400"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-[var(--bg-soft)] clip-slide delay-200"></div>
+        <div className="absolute top-12 left-[16.66%] right-[16.66%] h-px bg-[var(--bg-soft)] clip-slide delay-300"></div>
+        <div className="absolute top-12 left-[16.66%] w-px h-12 bg-[var(--bg-soft)] clip-slide delay-400"></div>
+        <div className="absolute top-12 left-1/2 w-px h-12 bg-[var(--bg-soft)] -translate-x-1/2 clip-slide delay-400"></div>
+        <div className="absolute top-12 right-[16.66%] w-px h-12 bg-[var(--bg-soft)] clip-slide delay-400"></div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-24">
@@ -83,7 +83,7 @@ export default function Protocol() {
                   holodex-item p-8 rounded-sm flex flex-col items-center text-center relative group h-full
                   ${feature.isActive 
                     ? 'skeuo-card-active px-10' 
-                    : 'border border-white/5 skeuo-card'
+                    : 'border border-[var(--border)] skeuo-card'
                   }
                 `}
               >
@@ -97,7 +97,7 @@ export default function Protocol() {
                 
                 <div className={`
                   absolute -top-3 px-2 bg-[#0b0d12] border text-[0.6rem] tracking-widest uppercase rounded-sm z-20
-                  ${feature.badgeColor} ${feature.badgeBorder || 'border-white/10'}
+                  ${feature.badgeColor} ${feature.badgeBorder || 'border-[var(--border)]'}
                   ${feature.isActive ? 'bg-[#141820]' : ''}
                 `}>
                   {feature.badge}
@@ -105,16 +105,16 @@ export default function Protocol() {
 
                 <iconify-icon icon={feature.icon} class={`text-5xl mb-6 transition-colors ${feature.iconColor} ${feature.isActive ? 'text-6xl' : ''}`}></iconify-icon>
                 
-                <h3 className={`font-medium text-white tracking-tight mb-3 ${feature.isActive ? 'text-2xl mb-4' : 'text-xl'}`}>
+                <h3 className={`font-medium text-[var(--text)] tracking-tight mb-3 ${feature.isActive ? 'text-2xl mb-4' : 'text-xl'}`}>
                   {feature.title}
                 </h3>
                 
-                <p className={`text-xs leading-relaxed font-light ${feature.isActive ? 'text-white/60 mb-8' : 'text-white/50'}`}>
+                <p className={`text-xs leading-relaxed font-light ${feature.isActive ? 'text-[var(--text-muted)] mb-8' : 'text-[var(--text-muted)]'}`}>
                   {feature.description}
                 </p>
 
                 {feature.isActive && (
-                  <button className="px-6 py-2 mt-auto border border-white/20 rounded-sm text-white text-[0.65rem] tracking-widest uppercase hover:bg-white hover:text-black transition-all relative z-20">
+                  <button className="px-6 py-2 mt-auto border border-[var(--border)] rounded-sm text-[var(--text)] text-[0.65rem] tracking-widest uppercase hover:bg-[var(--brand-green)] hover:text-white transition-all relative z-20">
                     Learn More
                   </button>
                 )}

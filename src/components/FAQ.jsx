@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -19,7 +19,7 @@ export default function FAQ({ faqs, accent = '#f43f5e', label = 'FAQ', heading }
           <div className="w-12 h-px" style={{ backgroundColor: `${accent}80` }}></div>
           <span>{label}</span>
         </div>
-        <h2 className="text-3xl md:text-4xl text-white font-medium tracking-tight">
+        <h2 className="text-3xl md:text-4xl text-[var(--text)] font-medium tracking-tight">
           {resolvedHeading}
         </h2>
       </div>
@@ -31,7 +31,7 @@ export default function FAQ({ faqs, accent = '#f43f5e', label = 'FAQ', heading }
             <div
               key={idx}
               className={`rounded-2xl transition-all duration-300 overflow-hidden ${
-                open ? 'skeuo-card-active transform scale-[1.02] z-10' : 'border border-white/10 skeuo-card hover:border-white/20'
+                open ? 'skeuo-card-active transform scale-[1.02] z-10' : 'border border-[var(--border)] skeuo-card hover:border-[var(--border)]'
               }`}
               style={open ? {
                 borderColor: `${accent}33`,
@@ -61,7 +61,7 @@ export default function FAQ({ faqs, accent = '#f43f5e', label = 'FAQ', heading }
                   open ? 'max-h-96 pb-6 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <p className="text-sm text-white/65 font-light leading-relaxed">
+                <p className="text-sm text-[var(--text-muted)] font-light leading-relaxed">
                   {faq.answer}
                 </p>
               </div>

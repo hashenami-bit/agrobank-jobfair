@@ -20,12 +20,12 @@ export default function Hero() {
   return (
     <section
       ref={revealRef}
-      className="w-full max-w-7xl min-h-[78vh] md:min-h-[90vh] relative flex items-center border-b border-white/[0.05] overflow-hidden accent-transition"
+      className="w-full max-w-7xl min-h-[78vh] md:min-h-[90vh] relative flex items-center border-b border-[var(--border)] overflow-hidden accent-transition"
       style={{ '--accent': accent }}
     >
       {/* Corner Brackets */}
-      <div className="absolute bottom-0 left-0 w-2 h-2 border-l border-b border-white/20 z-20"></div>
-      <div className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-white/20 z-20"></div>
+      <div className="absolute bottom-0 left-0 w-2 h-2 border-l border-b border-[var(--border)] z-20"></div>
+      <div className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-[var(--border)] z-20"></div>
 
       <div className="absolute inset-0 grid grid-cols-12 gap-6 px-6 h-full items-center">
 
@@ -144,18 +144,18 @@ export default function Hero() {
           <div key={slideIndex} className="animate-slide-in">
             <div className="flex items-center space-x-4 mb-4">
               <span className="text-2xl font-light" style={{ color: accent }}>{slide.num}</span>
-              <div className="w-8 h-px bg-white/20"></div>
+              <div className="w-8 h-px bg-[var(--border)]"></div>
               <button
                 type="button"
                 onClick={next}
                 aria-label="Next slide"
-                className="text-white/50 transition-colors cursor-pointer hover:[color:var(--accent)]"
+                className="text-[var(--text-muted)] transition-colors cursor-pointer hover:[color:var(--accent)]"
               >
                 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
               </button>
             </div>
 
-            <h1 className="leading-[1.1] text-4xl md:text-6xl font-medium text-white tracking-tight mb-4 md:mb-6">
+            <h1 className="leading-[1.1] text-4xl md:text-6xl font-medium text-[var(--text)] tracking-tight mb-4 md:mb-6">
               <Typewriter key={`${slideIndex}-${lang}`} text={slide.heading} speed={70} startDelay={300} cursorColor={accent} />
             </h1>
 
@@ -174,7 +174,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom Progress Line */}
-      <div className="absolute bottom-0 left-0 w-full h-px bg-white/10 flex clip-slide delay-800">
+      <div className="absolute bottom-0 left-0 w-full h-px bg-[var(--border)] flex clip-slide delay-800">
         <div className="w-1/3 h-full" style={{ backgroundColor: accent, opacity: 0.7 }}></div>
         <div className="w-1/4 h-full" style={{ backgroundColor: accent }}></div>
       </div>

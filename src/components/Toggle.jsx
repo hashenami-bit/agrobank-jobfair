@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+﻿import clsx from 'clsx';
 
 export default function Toggle({ checked, onChange, label }) {
   return (
@@ -12,7 +12,7 @@ export default function Toggle({ checked, onChange, label }) {
         />
         <div className={clsx(
           "w-8 h-4 rounded-full relative transition-colors duration-200",
-          checked ? "bg-[#f7931a]" : "bg-white/20 group-hover:bg-white/30"
+          checked ? "bg-[#f7931a]" : "bg-[var(--bg-soft)] group-hover:bg-[var(--bg-soft)]"
         )}>
           <div className={clsx(
             "w-4 h-4 bg-white rounded-full absolute left-0 top-0 transition-transform duration-300 ease-spring",
@@ -20,7 +20,7 @@ export default function Toggle({ checked, onChange, label }) {
           )}></div>
         </div>
       </div>
-      {label && <span className="ml-3 text-xs font-medium text-white/80 select-none">{label}</span>}
+      {label && <span className="ml-3 text-xs font-medium text-[var(--text-muted)] select-none">{label}</span>}
     </label>
   );
 }

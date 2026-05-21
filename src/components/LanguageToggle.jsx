@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+﻿import clsx from 'clsx';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useSlide } from '../contexts/SlideContext';
 
@@ -16,7 +16,7 @@ export default function LanguageToggle() {
     <div
       role="group"
       aria-label={t('languageToggle.aria')}
-      className="relative inline-flex items-center rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-sm p-0.5 text-[0.7rem] font-semibold tracking-widest uppercase select-none"
+      className="relative inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--bg-soft)] backdrop-blur-sm p-0.5 text-[0.7rem] font-semibold tracking-widest uppercase select-none"
     >
       {OPTIONS.map((opt) => {
         const active = lang === opt.code;
@@ -28,7 +28,7 @@ export default function LanguageToggle() {
             aria-pressed={active}
             className={clsx(
               'relative z-10 px-3 py-1.5 rounded-full transition-colors cursor-pointer',
-              active ? 'text-white' : 'text-white/55 hover:text-white/80'
+              active ? 'text-[var(--text)]' : 'text-[var(--text-muted)] hover:text-[var(--text-muted)]'
             )}
             style={active ? {
               backgroundColor: `${accent}33`,

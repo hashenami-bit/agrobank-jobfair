@@ -1,4 +1,4 @@
-import { useReveal } from '../../hooks/useReveal';
+﻿import { useReveal } from '../../hooks/useReveal';
 import MaskedText from '../../components/MaskedText';
 
 export default function Features() {
@@ -37,10 +37,10 @@ export default function Features() {
   ];
 
   return (
-    <section className="w-full max-w-7xl py-32 px-6 relative border-b border-white/[0.05]">
+    <section className="w-full max-w-7xl py-32 px-6 relative border-b border-[var(--border)]">
       {/* Grid Lines inside section */}
-      <div className="absolute top-0 bottom-0 left-1/3 w-px bg-white/[0.03] -z-10"></div>
-      <div className="absolute top-0 bottom-0 right-1/3 w-px bg-white/[0.03] -z-10"></div>
+      <div className="absolute top-0 bottom-0 left-1/3 w-px bg-[var(--bg-soft)] -z-10"></div>
+      <div className="absolute top-0 bottom-0 right-1/3 w-px bg-[var(--bg-soft)] -z-10"></div>
 
       <div ref={headerRef} className="text-center mb-24">
         <div className="flex items-center justify-center space-x-4 mb-4 text-[0.65rem] tracking-widest uppercase text-rose-500 font-medium clip-slide delay-100">
@@ -48,7 +48,7 @@ export default function Features() {
           <div className="w-12 h-px bg-rose-500/50"></div>
           <span>Core Features</span>
         </div>
-        <h2 className="text-4xl md:text-5xl text-white font-medium tracking-tight">
+        <h2 className="text-4xl md:text-5xl text-[var(--text)] font-medium tracking-tight">
           <MaskedText text="Built for Professional\nTraders" delayStart={200} stagger={100} />
         </h2>
       </div>
@@ -59,7 +59,7 @@ export default function Features() {
             key={idx}
             className={`clip-slide delay-${(idx + 1) * 100} ${feature.colSpan}`}
           >
-            <div className="group relative overflow-hidden p-8 rounded-sm border border-white/5 skeuo-card hover:-translate-y-2 transition-all duration-300 h-full">
+            <div className="group relative overflow-hidden p-8 rounded-sm border border-[var(--border)] skeuo-card hover:-translate-y-2 transition-all duration-300 h-full">
               {feature.image && (
                 <div className="absolute inset-0 z-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none">
                   <img src={feature.image} alt={feature.title} className="w-full h-full object-cover mix-blend-overlay grayscale group-hover:grayscale-0 transition-all duration-500" />
@@ -68,11 +68,11 @@ export default function Features() {
               
               <div className="relative z-10 flex flex-col h-full justify-between pointer-events-none">
                 <div>
-                  <div className="w-12 h-12 rounded-sm border border-white/10 bg-white/[0.02] flex items-center justify-center mb-6 group-hover:border-rose-500/30 group-hover:bg-rose-500/10 transition-colors">
-                    <iconify-icon icon={feature.icon} class="text-2xl text-white/70 group-hover:text-rose-500 transition-colors"></iconify-icon>
+                  <div className="w-12 h-12 rounded-sm border border-[var(--border)] bg-[var(--bg-soft)] flex items-center justify-center mb-6 group-hover:border-rose-500/30 group-hover:bg-rose-500/10 transition-colors">
+                    <iconify-icon icon={feature.icon} class="text-2xl text-[var(--text-muted)] group-hover:text-rose-500 transition-colors"></iconify-icon>
                   </div>
-                  <h3 className="text-2xl text-white font-medium tracking-tight mb-3 group-hover:text-rose-500 transition-colors">{feature.title}</h3>
-                  <p className="text-sm text-white/50 leading-relaxed font-light">{feature.description}</p>
+                  <h3 className="text-2xl text-[var(--text)] font-medium tracking-tight mb-3 group-hover:text-rose-500 transition-colors">{feature.title}</h3>
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed font-light">{feature.description}</p>
                 </div>
               </div>
               

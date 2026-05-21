@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import Toggle from '../../components/Toggle';
 import { useReveal } from '../../hooks/useReveal';
 import MaskedText from '../../components/MaskedText';
@@ -46,28 +46,28 @@ export default function Reserves() {
   ];
 
   return (
-    <section className="w-full max-w-7xl py-32 px-6 relative border-b border-white/[0.05]">
+    <section className="w-full max-w-7xl py-32 px-6 relative border-b border-[var(--border)]">
       <div ref={headerRef} className="text-center mb-16">
         <div className="flex items-center justify-center space-x-4 mb-4 text-[0.65rem] tracking-widest uppercase text-rose-500 font-medium clip-slide delay-100">
           <span>04</span>
           <div className="w-12 h-px bg-rose-500/50"></div>
           <span>Transparency</span>
         </div>
-        <h2 className="text-4xl md:text-5xl text-white font-medium tracking-tight">
+        <h2 className="text-4xl md:text-5xl text-[var(--text)] font-medium tracking-tight">
           <MaskedText text="Proof of reserves\nand liabilities" delayStart={200} stagger={100} />
         </h2>
       </div>
 
-      <div ref={tableRef} className="max-w-4xl mx-auto border border-white/10 rounded-sm skeuo-card overflow-hidden">
+      <div ref={tableRef} className="max-w-4xl mx-auto border border-[var(--border)] rounded-sm skeuo-card overflow-hidden">
         
         {/* Top Header Bar */}
-        <div className="clip-slide delay-100 flex flex-col sm:flex-row justify-between items-start sm:items-center px-8 py-5 border-b border-white/10 bg-white/[0.02] gap-4">
+        <div className="clip-slide delay-100 flex flex-col sm:flex-row justify-between items-start sm:items-center px-8 py-5 border-b border-[var(--border)] bg-[var(--bg-soft)] gap-4">
           <Toggle 
             checked={includeNvc} 
             onChange={setIncludeNvc} 
             label="Include NVC Token" 
           />
-          <div className="flex items-center space-x-2 text-[0.65rem] text-white/40 tracking-widest uppercase">
+          <div className="flex items-center space-x-2 text-[0.65rem] text-[var(--text-muted)] tracking-widest uppercase">
             <span className="text-rose-500 animate-pulse">● 1 min ago</span>
             <span>- Data updated every 15 mins</span>
           </div>
@@ -76,7 +76,7 @@ export default function Reserves() {
         {/* Table Rows */}
         <div className="flex flex-col">
           {data.map((row, index) => (
-            <div key={row.id} className={`clip-slide delay-${(index + 2) * 100} flex flex-col sm:flex-row items-start sm:items-center justify-between px-8 py-6 border-b border-white/5 hover:bg-white/[0.02] transition-colors group gap-4`}>
+            <div key={row.id} className={`clip-slide delay-${(index + 2) * 100} flex flex-col sm:flex-row items-start sm:items-center justify-between px-8 py-6 border-b border-[var(--border)] hover:bg-[var(--bg-soft)] transition-colors group gap-4`}>
               <div className="flex items-center space-x-6">
                 {/* Mini bar chart visual */}
                 <div className={`flex items-end space-x-1 h-8 ${row.chartOpacity} transition-all duration-300`}>
@@ -89,12 +89,12 @@ export default function Reserves() {
                     {row.icon && <iconify-icon icon={row.icon} class={`${row.iconColor} text-sm`}></iconify-icon>}
                     <span className={`text-sm font-medium tracking-wide ${row.ml || ''}`}>{row.title}</span>
                   </div>
-                  <span className={`text-[0.65rem] text-white/40 uppercase tracking-wider ${row.ml || ''}`}>{row.subtitle}</span>
+                  <span className={`text-[0.65rem] text-[var(--text-muted)] uppercase tracking-wider ${row.ml || ''}`}>{row.subtitle}</span>
                 </div>
               </div>
-              <div className="text-left sm:text-right w-full sm:w-auto ml-16 sm:ml-0 border-t sm:border-t-0 border-white/5 pt-2 sm:pt-0">
-                <div className="text-lg font-medium tracking-tight text-white/90">{row.value}</div>
-                <div className="text-[0.65rem] text-white/40 tracking-wider">{row.subValue}</div>
+              <div className="text-left sm:text-right w-full sm:w-auto ml-16 sm:ml-0 border-t sm:border-t-0 border-[var(--border)] pt-2 sm:pt-0">
+                <div className="text-lg font-medium tracking-tight text-[var(--text-muted)]">{row.value}</div>
+                <div className="text-[0.65rem] text-[var(--text-muted)] tracking-wider">{row.subValue}</div>
               </div>
             </div>
           ))}
@@ -103,10 +103,10 @@ export default function Reserves() {
         {/* Footer of table */}
         <div className="clip-slide delay-500 px-8 py-5 bg-[#080a0e] flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex items-center space-x-3 max-w-sm">
-            <iconify-icon icon="solar:stars-linear" class="text-xl text-white/50"></iconify-icon>
-            <p className="text-[0.65rem] text-white/50 leading-relaxed tracking-wide">Market-leading transparency to inspire user confidence and create unparalleled trust in centralized trading products.</p>
+            <iconify-icon icon="solar:stars-linear" class="text-xl text-[var(--text-muted)]"></iconify-icon>
+            <p className="text-[0.65rem] text-[var(--text-muted)] leading-relaxed tracking-wide">Market-leading transparency to inspire user confidence and create unparalleled trust in centralized trading products.</p>
           </div>
-          <button className="px-5 py-2 border border-white/20 rounded-sm text-white text-[0.65rem] tracking-widest uppercase hover:bg-white hover:text-black transition-all whitespace-nowrap">
+          <button className="px-5 py-2 border border-[var(--border)] rounded-sm text-[var(--text)] text-[0.65rem] tracking-widest uppercase hover:bg-[var(--brand-green)] hover:text-white transition-all whitespace-nowrap">
             View Full Audit
           </button>
         </div>

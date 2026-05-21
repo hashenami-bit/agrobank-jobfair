@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { useReveal } from '../../hooks/useReveal';
 import MaskedText from '../../components/MaskedText';
@@ -102,12 +102,12 @@ export default function Vacancies() {
   return (
     <section
       id="slide-content"
-      className="w-full max-w-7xl py-32 px-6 relative border-b border-white/[0.05]"
+      className="w-full max-w-7xl py-32 px-6 relative border-b border-[var(--border)]"
       style={{ '--accent': accent, '--card-hover-border': `${accent}66` }}
     >
       {/* Vertical guide lines */}
-      <div className="absolute top-0 bottom-0 left-1/3 w-px bg-white/[0.03] -z-10"></div>
-      <div className="absolute top-0 bottom-0 right-1/3 w-px bg-white/[0.03] -z-10"></div>
+      <div className="absolute top-0 bottom-0 left-1/3 w-px bg-[var(--bg-soft)] -z-10"></div>
+      <div className="absolute top-0 bottom-0 right-1/3 w-px bg-[var(--bg-soft)] -z-10"></div>
 
       {/* Header */}
       <div ref={headerRef} className="text-center mb-20">
@@ -119,14 +119,14 @@ export default function Vacancies() {
           <div className="w-12 h-px" style={{ backgroundColor: `${accent}80` }}></div>
           <span>{t('vacancies.kicker')}</span>
         </div>
-        <h2 className="text-4xl md:text-5xl text-white font-medium tracking-tight">
+        <h2 className="text-4xl md:text-5xl text-[var(--text)] font-medium tracking-tight">
           <MaskedText key={`vac-h-${lang}`} text={t('vacancies.heading')} delayStart={200} stagger={100} />
         </h2>
       </div>
 
       {/* Branch heading */}
       <div className="text-center mb-12">
-        <h3 className="text-3xl md:text-4xl text-white font-medium tracking-tight">
+        <h3 className="text-3xl md:text-4xl text-[var(--text)] font-medium tracking-tight">
           {t('vacancies.branchHeading')}
         </h3>
       </div>
@@ -134,12 +134,12 @@ export default function Vacancies() {
       {/* Cards */}
       <div ref={gridRef} className="relative max-w-6xl mx-auto holodex-container">
         {/* Connector lines (1 trunk → 4 legs) */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-white/20 clip-slide delay-200"></div>
-        <div className="absolute top-12 left-[12.5%] right-[12.5%] h-px bg-white/20 clip-slide delay-300"></div>
-        <div className="absolute top-12 left-[12.5%] w-px h-12 bg-white/20 clip-slide delay-400"></div>
-        <div className="absolute top-12 left-[37.5%] w-px h-12 bg-white/20 clip-slide delay-400"></div>
-        <div className="absolute top-12 left-[62.5%] w-px h-12 bg-white/20 clip-slide delay-400"></div>
-        <div className="absolute top-12 left-[87.5%] w-px h-12 bg-white/20 clip-slide delay-400"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-[var(--bg-soft)] clip-slide delay-200"></div>
+        <div className="absolute top-12 left-[12.5%] right-[12.5%] h-px bg-[var(--bg-soft)] clip-slide delay-300"></div>
+        <div className="absolute top-12 left-[12.5%] w-px h-12 bg-[var(--bg-soft)] clip-slide delay-400"></div>
+        <div className="absolute top-12 left-[37.5%] w-px h-12 bg-[var(--bg-soft)] clip-slide delay-400"></div>
+        <div className="absolute top-12 left-[62.5%] w-px h-12 bg-[var(--bg-soft)] clip-slide delay-400"></div>
+        <div className="absolute top-12 left-[87.5%] w-px h-12 bg-[var(--bg-soft)] clip-slide delay-400"></div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-24">
 
@@ -156,7 +156,7 @@ export default function Vacancies() {
               >
                 <div
                   className={`holodex-item p-8 ${cardRadius} flex flex-col items-center text-center relative group h-full ${
-                    isActive ? 'skeuo-card-active' : 'border border-white/5 skeuo-card'
+                    isActive ? 'skeuo-card-active' : 'border border-[var(--border)] skeuo-card'
                   }`}
                   style={isActive ? { borderColor: `${accent}33`, boxShadow: `inset 0 1px 0 0 rgba(255,255,255,0.1), inset 0 0 30px ${accent}1A, 0 0 40px -10px ${accent}40` } : undefined}
                 >
@@ -173,15 +173,15 @@ export default function Vacancies() {
                     className={`mb-6 transition-all ${isActive ? 'w-24 h-24' : 'w-20 h-20'}`}
                   />
 
-                  <h3 className={`font-medium text-white tracking-tight mb-3 ${isActive ? 'text-2xl' : 'text-xl'}`}>
+                  <h3 className={`font-medium text-[var(--text)] tracking-tight mb-3 ${isActive ? 'text-2xl' : 'text-xl'}`}>
                     {bizCard.title}
                   </h3>
 
-                  <p className={`text-sm leading-relaxed font-light mb-8 ${isActive ? 'text-white/65' : 'text-white/55'}`}>
+                  <p className={`text-sm leading-relaxed font-light mb-8 ${isActive ? 'text-[var(--text-muted)]' : 'text-[var(--text-muted)]'}`}>
                     {bizCard.description}
                   </p>
 
-                  <span className="px-6 py-2 mt-auto border border-white/20 rounded-full text-white text-[0.65rem] tracking-widest uppercase hover:bg-white hover:text-black transition-all relative z-20 inline-flex items-center gap-2">
+                  <span className="px-6 py-2 mt-auto border border-[var(--border)] rounded-full text-[var(--text)] text-[0.65rem] tracking-widest uppercase hover:bg-[var(--brand-green)] hover:text-white transition-all relative z-20 inline-flex items-center gap-2">
                     {bizCard.cta}
                     <ArrowUpRight size={14} strokeWidth={2} />
                   </span>
@@ -205,7 +205,7 @@ export default function Vacancies() {
               >
                 <div
                   className={`holodex-item p-8 ${cardRadius} flex flex-col items-center relative group h-full ${
-                    isActive ? 'skeuo-card-active' : 'border border-white/5 skeuo-card'
+                    isActive ? 'skeuo-card-active' : 'border border-[var(--border)] skeuo-card'
                   }`}
                   style={isActive ? { borderColor: `${accent}33`, boxShadow: `inset 0 1px 0 0 rgba(255,255,255,0.1), inset 0 0 30px ${accent}1A, 0 0 40px -10px ${accent}40` } : undefined}
                 >
@@ -235,7 +235,7 @@ export default function Vacancies() {
                   </button>
 
                   {/* Name + role */}
-                  <h3 className={`font-medium text-white tracking-tight mb-1 text-center ${isActive ? 'text-xl' : 'text-lg'}`}>
+                  <h3 className={`font-medium text-[var(--text)] tracking-tight mb-1 text-center ${isActive ? 'text-xl' : 'text-lg'}`}>
                     {r.name}
                   </h3>
                   <div
@@ -250,7 +250,7 @@ export default function Vacancies() {
                     {r.positions.slice(0, 4).map((pos) => (
                       <li
                         key={pos}
-                        className={`text-base font-medium flex items-start gap-2.5 ${isActive ? 'text-white/90' : 'text-white/80'}`}
+                        className={`text-base font-medium flex items-start gap-2.5 ${isActive ? 'text-[var(--text-muted)]' : 'text-[var(--text-muted)]'}`}
                       >
                         <span
                           className="w-1.5 h-1.5 rounded-full shrink-0 mt-2.5"
@@ -260,7 +260,7 @@ export default function Vacancies() {
                       </li>
                     ))}
                     {r.positions.length > 4 && (
-                      <li className="text-base flex items-center gap-2.5 text-white/45 leading-none pl-3">
+                      <li className="text-base flex items-center gap-2.5 text-[var(--text-muted)] leading-none pl-3">
                         ...
                       </li>
                     )}
@@ -273,7 +273,7 @@ export default function Vacancies() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="flex items-center gap-2 text-sm font-medium hover:opacity-80 transition-opacity text-white/85"
+                      className="flex items-center gap-2 text-sm font-medium hover:opacity-80 transition-opacity text-[var(--text-muted)]"
                     >
                       <iconify-icon icon="simple-icons:telegram" class="text-base" style={{ color: accent }}></iconify-icon>
                       <span>{r.telegram}</span>

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -41,7 +41,7 @@ export default function RecruiterModal({ recruiter, open, onClose, accent = '#04
       aria-modal="true"
     >
       <div
-        className="relative bg-[#0b0d12] border border-white/10 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto skeuo-card"
+        className="relative bg-[#0b0d12] border border-[var(--border)] rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto skeuo-card"
         style={{ boxShadow: `0 30px 80px -20px ${accent}55` }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -50,13 +50,13 @@ export default function RecruiterModal({ recruiter, open, onClose, accent = '#04
           type="button"
           onClick={onClose}
           aria-label={t('recruiterModal.closeAria')}
-          className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full text-white/50 hover:text-white hover:bg-white/5 transition-colors"
+          className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--bg-soft)] transition-colors"
         >
           <X size={22} strokeWidth={1.5} />
         </button>
 
         {/* Recruiter Profile — big avatar block */}
-        <div className="px-8 pt-12 pb-10 md:px-12 flex flex-col items-center text-center border-b border-white/10">
+        <div className="px-8 pt-12 pb-10 md:px-12 flex flex-col items-center text-center border-b border-[var(--border)]">
           <div
             className="w-32 h-32 rounded-full overflow-hidden mb-5"
             style={{
@@ -72,7 +72,7 @@ export default function RecruiterModal({ recruiter, open, onClose, accent = '#04
               />
             ) : (
               <div
-                className="w-full h-full flex items-center justify-center text-3xl font-semibold text-white"
+                className="w-full h-full flex items-center justify-center text-3xl font-semibold text-[var(--text)]"
                 style={{ backgroundColor: `${accent}40` }}
               >
                 {recruiter.initials}
@@ -80,7 +80,7 @@ export default function RecruiterModal({ recruiter, open, onClose, accent = '#04
             )}
           </div>
 
-          <h2 className="text-3xl font-medium text-white tracking-tight mb-1">
+          <h2 className="text-3xl font-medium text-[var(--text)] tracking-tight mb-1">
             {recruiter.name}
           </h2>
 
@@ -96,7 +96,7 @@ export default function RecruiterModal({ recruiter, open, onClose, accent = '#04
               href={recruiter.telegramHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-[var(--text)] transition-transform hover:-translate-y-0.5"
               style={{ backgroundColor: accent }}
             >
               <iconify-icon icon="simple-icons:telegram" class="text-base"></iconify-icon>
@@ -125,7 +125,7 @@ export default function RecruiterModal({ recruiter, open, onClose, accent = '#04
           >
             {t('recruiterModal.sectionKicker')}
           </div>
-          <h3 className="text-xl text-white font-medium mb-6">
+          <h3 className="text-xl text-[var(--text)] font-medium mb-6">
             {t('recruiterModal.sectionHeading')}
           </h3>
 
@@ -133,14 +133,14 @@ export default function RecruiterModal({ recruiter, open, onClose, accent = '#04
             {recruiter.positions.map((pos) => (
               <li
                 key={pos}
-                className="flex items-center gap-3 p-4 rounded-2xl border border-white/10 hover:border-white/30 transition-colors"
+                className="flex items-center gap-3 p-4 rounded-2xl border border-[var(--border)] hover:border-[var(--border)] transition-colors"
                 style={{ backgroundColor: `${accent}08` }}
               >
                 <span
                   className="w-2 h-2 rounded-full shrink-0"
                   style={{ backgroundColor: accent }}
                 ></span>
-                <span className="text-base text-white">{pos}</span>
+                <span className="text-base text-[var(--text)]">{pos}</span>
               </li>
             ))}
           </ul>

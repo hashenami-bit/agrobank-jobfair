@@ -34,11 +34,11 @@ export default function Navbar() {
       {/* Corner Brackets */}
       <div className={clsx(
         "absolute top-0 left-0 w-2 h-2 border-l border-t transition-colors duration-300",
-        scrolled ? "border-white/40" : "border-white/20"
+        "border-[var(--border)]"
       )}></div>
       <div className={clsx(
         "absolute top-0 right-0 w-2 h-2 border-r border-t transition-colors duration-300",
-        scrolled ? "border-white/40" : "border-white/20"
+        "border-[var(--border)]"
       )}></div>
 
       <button
@@ -64,8 +64,8 @@ export default function Navbar() {
                 key={s.num}
                 type="button"
                 onClick={() => goToSlide(i)}
-                className="flex items-center gap-1.5 transition-colors cursor-pointer hover:text-white"
-                style={{ color: active ? s.accent : 'rgba(255,255,255,0.55)' }}
+                className="flex items-center gap-1.5 transition-colors cursor-pointer hover:opacity-80"
+                style={{ color: active ? s.accent : 'var(--text-muted)' }}
               >
                 <span className="text-[0.65rem] opacity-70">{s.num}</span>
                 <span>{s.label}</span>
