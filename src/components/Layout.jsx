@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import NexusEngine from './NexusEngine';
 import { SlideProvider } from '../contexts/SlideContext';
 
 export default function Layout() {
@@ -9,9 +8,6 @@ export default function Layout() {
   return (
     <SlideProvider>
     <div className="relative antialiased selection:bg-rose-500 selection:text-white min-h-screen">
-      {/* Background WebGL Engine & HUD */}
-      <NexusEngine />
-
       {/* Global Grid Lines Container */}
       <div className="fixed inset-0 w-full h-full z-0 pointer-events-none flex justify-center">
         <div className="w-full max-w-7xl h-full border-x border-white/[0.03] relative">
