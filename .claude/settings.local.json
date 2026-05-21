@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\usmon\\\\OneDrive\\\\Desktop\\\\agrobank-hiring\\\\jobfair\" -Force)",
+      "Bash(Select-Object Name, PSIsContainer)",
+      "PowerShell(head *)",
+      "PowerShell(Get-ChildItem -Recurse \"C:\\\\Users\\\\usmon\\\\OneDrive\\\\Desktop\\\\agrobank-hiring\\\\jobfair\\\\src\" -File | ForEach-Object {$_.FullName})",
+      "Bash(npm run *)",
+      "Bash(npm install *)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
+  }
+}
