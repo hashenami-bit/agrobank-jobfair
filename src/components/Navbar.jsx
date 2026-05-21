@@ -28,8 +28,8 @@ export default function Navbar() {
     <nav className={clsx(
       "sticky top-0 w-full max-w-7xl px-6 flex items-center justify-between z-50 transition-all duration-300",
       scrolled
-        ? "py-3 bg-[#030303]/80 backdrop-blur-md border-b border-white/[0.1] shadow-lg"
-        : "pt-8 md:pt-[88px] pb-4 bg-transparent border-b border-white/[0.05]"
+        ? "py-3 bg-white/90 backdrop-blur border-b border-[var(--border)] shadow-sm"
+        : "pt-8 md:pt-[88px] pb-4 bg-transparent border-b border-transparent"
     )}>
       {/* Corner Brackets */}
       <div className={clsx(
