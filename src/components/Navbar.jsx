@@ -56,18 +56,30 @@ export default function Navbar() {
 
       {/* Right cluster: slide nav (desktop) + language toggle (always) */}
       <div className="flex items-center gap-4 md:gap-6">
-        <div className="hidden md:flex items-center gap-7 text-xs font-medium tracking-widest uppercase">
+        <div className="hidden md:flex items-center gap-6 text-base font-semibold tracking-widest uppercase">
           {slides.map((s, i) => {
             const active = slideIndex === i;
+            if (active) {
+              return (
+                <button
+                  key={s.num}
+                  type="button"
+                  onClick={() => goToSlide(i)}
+                  className="px-5 py-2.5 rounded-full inline-flex items-center gap-2 cursor-pointer bg-transparent border-2 border-white text-white transition-colors"
+                >
+                  <span className="text-xs opacity-80">{s.num}</span>
+                  <span>{s.label}</span>
+                </button>
+              );
+            }
             return (
               <button
                 key={s.num}
                 type="button"
                 onClick={() => goToSlide(i)}
-                className="flex items-center gap-1.5 transition-colors cursor-pointer hover:text-white"
-                style={{ color: active ? s.accent : 'rgba(255,255,255,0.55)' }}
+                className="flex items-center gap-2 transition-colors cursor-pointer text-white hover:text-[#00973A]"
               >
-                <span className="text-[0.65rem] opacity-70">{s.num}</span>
+                <span className="text-xs opacity-70">{s.num}</span>
                 <span>{s.label}</span>
               </button>
             );

@@ -5,9 +5,9 @@ import cityscapeImage from '../assets/cityscape.webp';
 import { useLanguage } from './LanguageContext';
 
 const slideMeta = [
-  { num: '01', accent: '#b91c1c', image: globeImage, alt: 'Glowing Earth globe', imgScale: 1, imgScaleHover: 1 },
-  { num: '02', accent: '#0443F2', image: staircasesImage, alt: 'Glowing staircase', imgScale: 1.12, imgScaleHover: 1.12 },
-  { num: '03', accent: '#10b981', image: cityscapeImage, alt: 'Glowing cityscape', imgScale: 1, imgScaleHover: 1 },
+  { num: '01', accent: '#00973A', image: globeImage, alt: 'Glowing Earth globe', imgScale: 1, imgScaleHover: 1 },
+  { num: '02', accent: '#00973A', image: staircasesImage, alt: 'Glowing staircase', imgScale: 1.12, imgScaleHover: 1.12 },
+  { num: '03', accent: '#00973A', image: cityscapeImage, alt: 'Glowing cityscape', imgScale: 1, imgScaleHover: 1 },
 ];
 
 const SlideContext = createContext(null);

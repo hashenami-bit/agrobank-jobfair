@@ -8,7 +8,7 @@ export default function Layout() {
 
   return (
     <SlideProvider>
-    <div className="relative antialiased selection:bg-rose-500 selection:text-white min-h-screen">
+    <div className="relative antialiased selection:bg-[#00973A] selection:text-white min-h-screen">
       {/* Background WebGL Engine & HUD */}
       <NexusEngine />
 
