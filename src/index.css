@@ -263,4 +263,51 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Apply / search inputs — dark glass style consistent with skeuo-card */
+  .apply-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    color: #fff;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    outline: none;
+  }
+  .apply-input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+  }
+  .apply-input:focus {
+    border-color: rgba(0, 151, 58, 0.6);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 0 3px rgba(0, 151, 58, 0.18);
+  }
+
+  /* Filter chip */
+  .filter-chip {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .filter-chip:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .filter-chip.is-active {
+    color: #fff;
+    border-color: #00973A;
+    background: rgba(0, 151, 58, 0.18);
+    box-shadow: 0 0 14px rgba(0, 151, 58, 0.3);
+  }
 }

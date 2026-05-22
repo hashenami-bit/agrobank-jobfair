@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { ArrowUpRight, Search, Send } from 'lucide-react';
 import { useReveal } from '../../hooks/useReveal';
 import MaskedText from '../../components/MaskedText';
 import headhunterLogo from '../../assets/headhunter-logo.png';
@@ -7,6 +7,7 @@ import islomPhoto from '../../assets/recruiters/islom.jpg';
 import durdonaPhoto from '../../assets/recruiters/durdona.jpeg';
 import elyorPhoto from '../../assets/recruiters/elyor.jpeg';
 import RecruiterModal from '../../components/RecruiterModal';
+import ApplyModal from '../../components/ApplyModal';
 import FAQ from '../../components/FAQ';
 import { useSlide } from '../../contexts/SlideContext';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -90,7 +91,25 @@ export default function Vacancies() {
   const accent = slide.accent;
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectedRecruiter, setSelectedRecruiter] = useState(null);
+  const [applyTarget, setApplyTarget] = useState(null); // { position, recruiter }
+  const [query, setQuery] = useState('');
+  const [teamFilter, setTeamFilter] = useState('all'); // 'all' | recruiter.id
   const careerFaqs = t('vacancies.faqs') || [];
+
+  // Flat list of every position with its owning recruiter — used by search/filter section.
+  const allPositions = useMemo(
+    () => recruiters.flatMap((r) => r.positions.map((pos) => ({ pos, recruiter: r }))),
+    [],
+  );
+
+  const filteredPositions = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return allPositions.filter(({ pos, recruiter }) => {
+      if (teamFilter !== 'all' && recruiter.id !== teamFilter) return false;
+      if (!q) return true;
+      return pos.toLowerCase().includes(q) || recruiter.badge.toLowerCase().includes(q);
+    });
+  }, [allPositions, query, teamFilter]);
   const bizCard = {
     badge: t('vacancies.bizCard.badge'),
     title: t('vacancies.bizCard.title'),
@@ -309,12 +328,133 @@ export default function Vacancies() {
         </div>
       </div>
 
+      {/* ─── All Vacancies: search + filter + flat list with Apply CTA ─── */}
+      <div className="relative max-w-6xl mx-auto mt-24">
+        <div className="text-center mb-8">
+          <div
+            className="text-[0.65rem] tracking-widest uppercase mb-3 font-medium"
+            style={{ color: accent }}
+          >
+            {t('vacancies.allKicker') || 'Barcha vakansiyalar'}
+          </div>
+          <h3 className="text-3xl md:text-4xl text-white font-medium tracking-tight">
+            {t('vacancies.allHeading') || 'O‘zingizga mos lavozimni toping'}
+          </h3>
+        </div>
+
+        {/* Search */}
+        <div className="relative max-w-xl mx-auto mb-5">
+          <Search
+            size={18}
+            strokeWidth={2}
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none"
+          />
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder={t('vacancies.searchPlaceholder') || 'Lavozim yoki kalit so‘zni kiriting (masalan: Java, ML, QA)'}
+            className="apply-input pl-11"
+          />
+        </div>
+
+        {/* Team chips */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+          <button
+            type="button"
+            onClick={() => setTeamFilter('all')}
+            className={`filter-chip ${teamFilter === 'all' ? 'is-active' : ''}`}
+          >
+            {t('vacancies.filterAll') || 'Hammasi'} ({allPositions.length})
+          </button>
+          {recruiters.map((r) => {
+            const count = allPositions.filter((p) => p.recruiter.id === r.id).length;
+            return (
+              <button
+                key={r.id}
+                type="button"
+                onClick={() => setTeamFilter(r.id)}
+                className={`filter-chip ${teamFilter === r.id ? 'is-active' : ''}`}
+              >
+                {r.badge} ({count})
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Position grid */}
+        {filteredPositions.length === 0 ? (
+          <div className="text-center py-12 text-white/55 text-sm">
+            {t('vacancies.noResults') || 'Hozircha hech narsa topilmadi. Boshqa kalit so‘z bilan urinib ko‘ring.'}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {filteredPositions.map(({ pos, recruiter }) => (
+              <div
+                key={`${recruiter.id}-${pos}`}
+                className="skeuo-card rounded-2xl p-5 flex flex-col gap-4 transition-all hover:-translate-y-0.5"
+                style={{ borderColor: 'rgba(255,255,255,0.06)' }}
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <span
+                    className="text-[0.6rem] tracking-widest uppercase font-medium px-2 py-1 rounded-full border"
+                    style={{ color: accent, borderColor: `${accent}55`, backgroundColor: `${accent}10` }}
+                  >
+                    {recruiter.badge}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedRecruiter(recruiter)}
+                    className="text-[0.65rem] text-white/45 hover:text-white/80 transition-colors"
+                  >
+                    {recruiter.name.split(' ').slice(-1)[0]} →
+                  </button>
+                </div>
+
+                <h4 className="text-base md:text-lg text-white font-medium leading-snug">
+                  {pos}
+                </h4>
+
+                <div className="mt-auto flex items-center justify-between gap-3 pt-2">
+                  <a
+                    href={recruiter.telegramHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-white/55 hover:text-white inline-flex items-center gap-1.5 transition-colors"
+                  >
+                    <iconify-icon icon="simple-icons:telegram" class="text-sm" style={{ color: accent }}></iconify-icon>
+                    {recruiter.telegram}
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => setApplyTarget({ position: pos, recruiter })}
+                    style={{ '--accent': accent }}
+                    className="btn-pill-filled px-3.5 py-2 rounded-full text-[0.65rem] tracking-widest uppercase font-semibold inline-flex items-center gap-1.5"
+                  >
+                    {t('vacancies.applyCta') || 'Ariza'}
+                    <Send size={12} strokeWidth={2.5} />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
       <FAQ faqs={careerFaqs} accent={accent} label={t('vacancies.faqLabel')} heading={t('common.faqHeading')} />
 
       <RecruiterModal
         recruiter={selectedRecruiter}
         open={!!selectedRecruiter}
         onClose={() => setSelectedRecruiter(null)}
+        accent={accent}
+      />
+
+      <ApplyModal
+        open={!!applyTarget}
+        onClose={() => setApplyTarget(null)}
+        position={applyTarget?.position}
+        recruiter={applyTarget?.recruiter}
         accent={accent}
       />
     </section>
