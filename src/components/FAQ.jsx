@@ -19,7 +19,7 @@ export default function FAQ({ faqs, accent = '#f43f5e', label = 'FAQ', heading }
           <div className="w-12 h-px" style={{ backgroundColor: `${accent}80` }}></div>
           <span>{label}</span>
         </div>
-        <h2 className="text-3xl md:text-4xl text-white font-medium tracking-tight">
+        <h2 className="font-agro-expanded text-3xl md:text-4xl text-white font-bold tracking-tight">
           {resolvedHeading}
         </h2>
       </div>
