@@ -1,5 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
+/* Agrobank brand font — used for headings */
+@font-face {
+  font-family: 'ALSAgrofont';
+  src: url('/fonts/ALSAgrofont-Regular_0.7.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ALSAgrofont';
+  src: url('/fonts/ALSAgrofont-Medium_0.7.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ALSAgrofont';
+  src: url('/fonts/ALSAgrofont-Bold_0.7.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ALSAgrofont';
+  src: url('/fonts/ALSAgrofont-Black_0.7.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ALSAgrofont Expanded';
+  src: url('/fonts/ALSAgrofont-BoldExpanded_0.7.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -70,7 +107,8 @@
     display: inline-block;
     overflow: hidden;
     vertical-align: bottom;
-    line-height: 1.1;
+    line-height: 1.3;
+    padding-bottom: 0.15em;
   }
   
   .word-inner {
@@ -309,5 +347,13 @@
     border-color: #00973A;
     background: rgba(0, 151, 58, 0.18);
     box-shadow: 0 0 14px rgba(0, 151, 58, 0.3);
+  }
+
+  /* Agrobank brand heading utility — wraps the official ALSAgrofont */
+  .font-agro {
+    font-family: 'ALSAgrofont', ui-sans-serif, system-ui, sans-serif;
+  }
+  .font-agro-expanded {
+    font-family: 'ALSAgrofont Expanded', 'ALSAgrofont', ui-sans-serif, system-ui, sans-serif;
   }
 }

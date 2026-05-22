@@ -48,7 +48,7 @@ export default function Projects() {
           <div className="w-12 h-px" style={{ backgroundColor: `${accent}80` }}></div>
           <span>{t('projects.kicker')}</span>
         </div>
-        <h2 className="text-4xl md:text-5xl text-white font-medium tracking-tight">
+        <h2 className="font-agro-expanded text-4xl md:text-5xl text-white font-bold tracking-tight">
           <MaskedText key={`proj-h-${lang}`} text={t('projects.heading')} delayStart={200} stagger={100} />
         </h2>
       </div>
