@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { useReveal } from '../../hooks/useReveal';
 import MaskedText from '../../components/MaskedText';
@@ -119,14 +119,14 @@ export default function Vacancies() {
           <div className="w-12 h-px" style={{ backgroundColor: `${accent}80` }}></div>
           <span>{t('vacancies.kicker')}</span>
         </div>
-        <h2 className="text-4xl md:text-5xl text-white font-medium tracking-tight">
+        <h2 className="font-agro-expanded text-4xl md:text-5xl text-white font-bold tracking-tight">
           <MaskedText key={`vac-h-${lang}`} text={t('vacancies.heading')} delayStart={200} stagger={100} />
         </h2>
       </div>
 
       {/* Branch heading */}
       <div className="text-center mb-12">
-        <h3 className="text-3xl md:text-4xl text-white font-medium tracking-tight">
+        <h3 className="font-agro-expanded text-3xl md:text-4xl text-white font-bold tracking-tight">
           {t('vacancies.branchHeading')}
         </h3>
       </div>

@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+﻿import { ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useReveal } from '../../hooks/useReveal';
 import Typewriter from '../../components/Typewriter';
 import { useSlide } from '../../contexts/SlideContext';
@@ -155,7 +155,7 @@ export default function Hero() {
               </button>
             </div>
 
-            <h1 className="leading-[1.1] text-4xl md:text-6xl font-medium text-white tracking-tight mb-4 md:mb-6">
+            <h1 className="font-agro-expanded leading-[1.1] text-4xl md:text-6xl font-bold text-white tracking-tight mb-4 md:mb-6">
               <Typewriter key={`${slideIndex}-${lang}`} text={slide.heading} speed={70} startDelay={300} cursorColor={accent} />
             </h1>
 

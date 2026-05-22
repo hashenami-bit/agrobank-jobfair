@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { HeartPulse, GraduationCap, TrendingUp, Gift, ArrowUpRight } from 'lucide-react';
 import { useReveal } from '../../hooks/useReveal';
 import MaskedText from '../../components/MaskedText';
@@ -47,14 +47,14 @@ export default function Offerings() {
           <div className="w-12 h-px" style={{ backgroundColor: `${accent}80` }}></div>
           <span>{t('offerings.kicker')}</span>
         </div>
-        <h2 className="text-4xl md:text-5xl text-white font-medium tracking-tight">
+        <h2 className="font-agro-expanded text-4xl md:text-5xl text-white font-bold tracking-tight">
           <MaskedText key={`offerings-h-${lang}`} text={t('offerings.heading')} delayStart={200} stagger={100} />
         </h2>
       </div>
 
       {/* Branch heading */}
       <div className="text-center mb-12">
-        <h3 className="text-3xl md:text-4xl text-white font-medium tracking-tight">
+        <h3 className="font-agro-expanded text-3xl md:text-4xl text-white font-bold tracking-tight">
           {t('offerings.branchHeading')}
         </h3>
       </div>

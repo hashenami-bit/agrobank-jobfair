@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Cctv, Satellite, Mic, BarChart3, ArrowUpRight, Sparkles } from 'lucide-react';
 import { useReveal } from '../../hooks/useReveal';
 import MaskedText from '../../components/MaskedText';
@@ -48,7 +48,7 @@ export default function Projects() {
           <div className="w-12 h-px" style={{ backgroundColor: `${accent}80` }}></div>
           <span>{t('projects.kicker')}</span>
         </div>
-        <h2 className="text-4xl md:text-5xl text-white font-medium tracking-tight">
+        <h2 className="font-agro-expanded text-4xl md:text-5xl text-white font-bold tracking-tight">
           <MaskedText key={`proj-h-${lang}`} text={t('projects.heading')} delayStart={200} stagger={100} />
         </h2>
       </div>
@@ -76,7 +76,7 @@ export default function Projects() {
 
       {/* Branch heading — centered above the trunk */}
       <div className="text-center mb-12">
-        <h3 className="text-3xl md:text-4xl text-white font-medium tracking-tight">
+        <h3 className="font-agro-expanded text-3xl md:text-4xl text-white font-bold tracking-tight">
           {t('projects.branchHeading')}
         </h3>
       </div>
