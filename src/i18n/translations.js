@@ -95,7 +95,7 @@ export const translations = {
         },
         {
           question: 'Suhbat jarayoni qanday bosqichlardan iborat?',
-          answer: '1) HR bilan dastlabki tanishuv suhbati (30 daqiqa) → 2) Jamoa lideri bilan texnik suhbat (60-90 daqiqa) → 3) IT direktori bilan yakuniy suhbat → 4) Taklif xati va shartnomani rasmiylashtirish.',
+          answer: '1) HR bilan dastlabki tanishuv suhbati (30 daqiqa) → 2) Jamoa lideri bilan texnik suhbat (60 daqiqa) → 3) IT direktori bilan yakuniy suhbat → 4) Taklif xati va shartnomani rasmiylashtirish.',
         },
         {
           question: 'Test topshiriqlar bormi va qancha vaqt oladi?',
@@ -258,7 +258,7 @@ export const translations = {
         },
         {
           question: 'Из каких этапов состоит процесс собеседования?',
-          answer: '1) Первичное знакомство с HR (30 минут) → 2) Техническое интервью с тимлидом (60-90 минут) → 3) Финальное интервью с IT-директором → 4) Оффер и оформление контракта.',
+          answer: '1) Первичное знакомство с HR (30 минут) → 2) Техническое интервью с тимлидом (60 минут) → 3) Финальное интервью с IT-директором → 4) Оффер и оформление контракта.',
         },
         {
           question: 'Есть ли тестовые задания и сколько они занимают?',
