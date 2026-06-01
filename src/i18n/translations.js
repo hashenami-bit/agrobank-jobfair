@@ -4,7 +4,7 @@ export const translations = {
 
     slides: [
       { label: 'Loyihalar', heading: 'Agrobank loyihalari haqida' },
-      { label: 'Kareyera', heading: 'Ochiq vakansiyalar' },
+      { label: 'Karyera', heading: 'Ochiq vakansiyalar' },
       { label: 'Biz haqimizda', heading: 'Biz nimalar taklif etamiz' },
     ],
 

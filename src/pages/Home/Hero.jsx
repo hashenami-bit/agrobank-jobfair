@@ -1,4 +1,5 @@
-﻿import { ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+﻿import { useRef } from 'react';
+import { ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useReveal } from '../../hooks/useReveal';
 import Typewriter from '../../components/Typewriter';
 import { useSlide } from '../../contexts/SlideContext';
@@ -6,11 +7,29 @@ import { useLanguage } from '../../contexts/LanguageContext';
 
 export default function Hero() {
   const revealRef = useReveal();
-  const { slideIndex, slide, next, prev } = useSlide();
+  const { slideIndex, slide, slides, next, prev, setSlideIndex } = useSlide();
   const { t, lang } = useLanguage();
 
   const launch = () => {
     document.getElementById('slide-content')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  // Touch swipe → change slides (mobile). Ignores taps and vertical scrolls.
+  const touchStart = useRef(null);
+  const onTouchStart = (e) => {
+    const tp = e.touches[0];
+    touchStart.current = { x: tp.clientX, y: tp.clientY };
+  };
+  const onTouchEnd = (e) => {
+    if (!touchStart.current) return;
+    const tp = e.changedTouches[0];
+    const dx = tp.clientX - touchStart.current.x;
+    const dy = tp.clientY - touchStart.current.y;
+    touchStart.current = null;
+    // require a deliberate horizontal swipe
+    if (Math.abs(dx) < 50 || Math.abs(dx) <= Math.abs(dy)) return;
+    if (dx < 0) next();
+    else prev();
   };
   const accent = slide.accent;
   // 8-digit hex appends alpha — '66' ≈ 40%, '99' ≈ 60%
@@ -20,6 +39,8 @@ export default function Hero() {
   return (
     <section
       ref={revealRef}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
       className="w-full max-w-7xl min-h-[78vh] md:min-h-[90vh] relative flex items-center border-b border-white/[0.05] overflow-hidden accent-transition"
       style={{ '--accent': accent }}
     >
@@ -112,7 +133,7 @@ export default function Hero() {
               type="button"
               onClick={prev}
               aria-label="Previous slide"
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 hover:-translate-x-1 cursor-pointer"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full hidden md:flex items-center justify-center transition-all hover:scale-110 hover:-translate-x-1 cursor-pointer"
               style={{
                 border: `2px solid ${accent}`,
                 backgroundColor: accentSoft,
@@ -127,7 +148,7 @@ export default function Hero() {
               type="button"
               onClick={next}
               aria-label="Next slide"
-              className="absolute right-[5%] top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full flex items-center justify-center transition-all hover:scale-110 cursor-pointer"
+              className="absolute right-[5%] top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full hidden md:flex items-center justify-center transition-all hover:scale-110 cursor-pointer"
               style={{
                 backgroundColor: accent,
                 boxShadow: `0 0 30px ${accent}88, 0 0 60px ${accent}44`,
@@ -142,7 +163,8 @@ export default function Hero() {
         {/* Right Text Area — pulled up on mobile so the Batafsil button stays in view */}
         <div className="col-span-12 md:col-span-5 flex flex-col justify-center relative z-10 overflow-hidden -mt-20 md:mt-0">
           <div key={slideIndex} className="animate-slide-in">
-            <div className="flex items-center space-x-4 mb-4">
+            {/* Desktop: slide number + next arrow */}
+            <div className="hidden md:flex items-center space-x-4 mb-4">
               <span className="text-2xl font-light" style={{ color: accent }}>{slide.num}</span>
               <div className="w-8 h-px bg-white/20"></div>
               <button
@@ -153,6 +175,53 @@ export default function Hero() {
               >
                 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
               </button>
+            </div>
+
+            {/* Mobile: tappable dots + label + de-emphasized chevrons (the floating ring arrows are hidden on small screens) */}
+            <div className="md:hidden mb-5">
+              <div className="flex items-center gap-3 mb-2">
+                <button
+                  type="button"
+                  onClick={prev}
+                  aria-label="Previous slide"
+                  className="w-9 h-9 -ml-1 rounded-full flex items-center justify-center text-white/45 active:text-white transition-colors"
+                >
+                  <ChevronLeft size={20} strokeWidth={2.5} />
+                </button>
+
+                <div className="flex items-center gap-2" aria-label="Slides">
+                  {slides.map((s, i) => {
+                    const active = slideIndex === i;
+                    return (
+                      <button
+                        key={s.num}
+                        type="button"
+                        aria-label={s.label || `Slide ${i + 1}`}
+                        aria-current={active ? 'true' : undefined}
+                        onClick={() => setSlideIndex(i)}
+                        className="h-2.5 rounded-full transition-all duration-300"
+                        style={{
+                          width: active ? 30 : 10,
+                          backgroundColor: active ? accent : 'rgba(255,255,255,0.25)',
+                        }}
+                      />
+                    );
+                  })}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={next}
+                  aria-label="Next slide"
+                  className="w-9 h-9 rounded-full flex items-center justify-center text-white/45 active:text-white transition-colors"
+                >
+                  <ChevronRight size={20} strokeWidth={2.5} />
+                </button>
+              </div>
+
+              <span className="block text-xs font-semibold tracking-widest uppercase" style={{ color: accent }}>
+                {slide.num} · {slide.label}
+              </span>
             </div>
 
             <h1 className="font-agro-expanded leading-[1.1] text-4xl md:text-6xl font-bold text-white tracking-tight mb-4 md:mb-6">
