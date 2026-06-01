@@ -44,7 +44,7 @@ export const translations = {
           badge: 'Karyera',
           title: "Karyera o'sishi",
           description: "Aniq karyera yo'lakchasi va lavozimda o'sish imkoniyatlari.",
-          features: ['Performance review', 'Promotion path', 'Cross-team rotation', 'Top Talent dasturi'],
+          features: ['Faoliyatni baholash', "Lavozimda ko'tarilish", 'Jamoalararo rotatsiya', 'Top Talent dasturi'],
         },
         {
           badge: 'Bonuslar',
@@ -207,7 +207,7 @@ export const translations = {
           badge: 'Карьера',
           title: 'Карьерный рост',
           description: 'Чёткая карьерная траектория и возможности роста в должности.',
-          features: ['Performance review', 'Promotion path', 'Cross-team rotation', 'Программа Top Talent'],
+          features: ['Оценка эффективности', 'Продвижение по службе', 'Ротация между командами', 'Программа Top Talent'],
         },
         {
           badge: 'Бонусы',
