@@ -91,7 +91,7 @@ export const translations = {
       faqs: [
         {
           question: 'Suhbatdan ish boshlashgacha qancha vaqt ketadi?',
-          answer: "O'rtacha 25 ish kuni. Jarayon HR suhbati bilan boshlanadi, keyin texnik intervyu, test topshiriq va yakuniy suhbat bo'lib, taklif xati 3-5 kun ichida yuboriladi.",
+          answer: "O'rtacha 25 ish kuni. Jarayon HR suhbati bilan boshlanadi, keyin texnik intervyu va yakuniy suhbat bo'lib, taklif xati 3-5 kun ichida yuboriladi.",
         },
         {
           question: 'Suhbat jarayoni qanday bosqichlardan iborat?',
@@ -254,7 +254,7 @@ export const translations = {
       faqs: [
         {
           question: 'Сколько времени занимает процесс от собеседования до выхода на работу?',
-          answer: 'В среднем 25 рабочих дней. Процесс начинается с HR-интервью, затем техническое собеседование, тестовое задание и финальное интервью, оффер отправляется в течение 3-5 дней.',
+          answer: 'В среднем 25 рабочих дней. Процесс начинается с HR-интервью, затем техническое собеседование и финальное интервью, оффер отправляется в течение 3-5 дней.',
         },
         {
           question: 'Из каких этапов состоит процесс собеседования?',
