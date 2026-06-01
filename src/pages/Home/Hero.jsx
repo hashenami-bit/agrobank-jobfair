@@ -48,10 +48,10 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 w-2 h-2 border-l border-b border-white/20 z-20"></div>
       <div className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-white/20 z-20"></div>
 
-      <div className="absolute inset-0 grid grid-cols-12 gap-6 px-6 h-full items-center">
+      <div className="relative md:absolute inset-0 grid grid-cols-12 gap-6 px-6 h-auto md:h-full items-center py-16 md:py-0">
 
-        {/* Left Visual Area */}
-        <div className="col-span-12 md:col-span-7 flex h-full relative items-center justify-center clip-slide delay-200">
+        {/* Left Visual Area — desktop only (mobile uses a calm inline image instead of the ring) */}
+        <div className="col-span-12 md:col-span-7 hidden md:flex h-full relative items-center justify-center clip-slide delay-200">
           <div className="relative w-[500px] h-[500px] flex items-center justify-center scale-95 md:scale-100 -my-3 md:my-0 origin-center">
             {/* Outer glow */}
             <div
@@ -160,8 +160,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Text Area — pulled up on mobile so the Batafsil button stays in view */}
-        <div className="col-span-12 md:col-span-5 flex flex-col justify-center relative z-10 overflow-hidden -mt-20 md:mt-0">
+        {/* Content area — on mobile this is the whole hero (the ring visual is hidden) */}
+        <div className="col-span-12 md:col-span-5 flex flex-col justify-center relative z-10 overflow-hidden">
           <div key={slideIndex} className="animate-slide-in">
             {/* Desktop: slide number + next arrow */}
             <div className="hidden md:flex items-center space-x-4 mb-4">
@@ -177,56 +177,67 @@ export default function Hero() {
               </button>
             </div>
 
-            {/* Mobile: tappable dots + label + de-emphasized chevrons (the floating ring arrows are hidden on small screens) */}
-            <div className="md:hidden mb-5">
-              <div className="flex items-center gap-3 mb-2">
-                <button
-                  type="button"
-                  onClick={prev}
-                  aria-label="Previous slide"
-                  className="w-9 h-9 -ml-1 rounded-full flex items-center justify-center text-white/45 active:text-white transition-colors"
-                >
-                  <ChevronLeft size={20} strokeWidth={2.5} />
-                </button>
-
-                <div className="flex items-center gap-2" aria-label="Slides">
-                  {slides.map((s, i) => {
-                    const active = slideIndex === i;
-                    return (
-                      <button
-                        key={s.num}
-                        type="button"
-                        aria-label={s.label || `Slide ${i + 1}`}
-                        aria-current={active ? 'true' : undefined}
-                        onClick={() => setSlideIndex(i)}
-                        className="h-2.5 rounded-full transition-all duration-300"
-                        style={{
-                          width: active ? 30 : 10,
-                          backgroundColor: active ? accent : 'rgba(255,255,255,0.25)',
-                        }}
-                      />
-                    );
-                  })}
-                </div>
-
-                <button
-                  type="button"
-                  onClick={next}
-                  aria-label="Next slide"
-                  className="w-9 h-9 rounded-full flex items-center justify-center text-white/45 active:text-white transition-colors"
-                >
-                  <ChevronRight size={20} strokeWidth={2.5} />
-                </button>
-              </div>
-
-              <span className="block text-xs font-semibold tracking-widest uppercase" style={{ color: accent }}>
-                {slide.num} · {slide.label}
-              </span>
-            </div>
+            {/* Mobile: kicker — which slide you're on */}
+            <span className="md:hidden block text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: accent }}>
+              {slide.num} · {slide.label}
+            </span>
 
             <h1 className="font-agro-expanded leading-[1.1] text-4xl md:text-6xl font-bold text-white tracking-tight mb-4 md:mb-6">
               <Typewriter key={`${slideIndex}-${lang}`} text={slide.heading} speed={70} startDelay={300} cursorColor={accent} />
             </h1>
+
+            {/* Mobile: the Agrobank orb — circular ring + rotating AGROBANK text, in the content-first flow */}
+            <div className="md:hidden relative w-[300px] h-[300px] mx-auto mb-8 flex items-center justify-center">
+              {/* Outer glow */}
+              <div className="absolute inset-0 rounded-full opacity-5 blur-3xl animate-pulse" style={{ backgroundColor: accent }}></div>
+
+              {/* Outer metallic ring */}
+              <div
+                className="absolute w-[240px] h-[240px] rounded-full border border-white/[0.05] bg-gradient-to-br from-white/[0.02] to-transparent"
+                style={{ boxShadow: 'inset 0 0 40px rgba(0,0,0,0.8), 0 20px 50px rgba(0,0,0,0.5)' }}
+              ></div>
+
+              {/* Rotating AGROBANK text */}
+              <svg
+                className="absolute w-[264px] h-[264px] pointer-events-none animate-spin [animation-duration:12s] origin-center"
+                viewBox="0 0 440 440"
+                style={{ filter: `drop-shadow(0 0 6px ${accentGlow})` }}
+              >
+                <defs>
+                  <path id="agrobank-ring-mobile" d="M 220,220 m -170,0 a 170,170 0 1,1 340,0 a 170,170 0 1,1 -340,0" fill="none" />
+                </defs>
+                {[0, 25, 50, 75].map((offset) => (
+                  <text
+                    key={offset}
+                    fill={accent}
+                    fillOpacity="0.9"
+                    fontSize="24"
+                    letterSpacing="5"
+                    fontWeight="600"
+                    dominantBaseline="middle"
+                    style={{ fontFamily: "'Space Mono', monospace" }}
+                  >
+                    <textPath href="#agrobank-ring-mobile" startOffset={`${offset}%`}>
+                      AGROBANK
+                    </textPath>
+                  </text>
+                ))}
+              </svg>
+
+              {/* Inner ring with the slide image */}
+              <div className="absolute w-[180px] h-[180px] rounded-full border border-white/10 skeuo-card flex items-center justify-center overflow-hidden">
+                {slide.image ? (
+                  <img
+                    key={slideIndex}
+                    src={slide.image}
+                    className="absolute inset-0 w-full h-full object-cover opacity-90"
+                    alt={slide.alt}
+                  />
+                ) : slide.HeroIcon ? (
+                  <slide.HeroIcon size={100} strokeWidth={1.2} style={{ color: accent, filter: `drop-shadow(0 0 30px ${accent}99)` }} />
+                ) : null}
+              </div>
+            </div>
 
             <div className="flex items-center">
               <button
@@ -236,6 +247,47 @@ export default function Hero() {
               >
                 {t('common.batafsil')}
                 <ChevronDown size={20} strokeWidth={2.5} className="animate-bounce-down" />
+              </button>
+            </div>
+
+            {/* Mobile: slide switcher — tappable dots + de-emphasized chevrons */}
+            <div className="md:hidden flex items-center gap-3 mt-8">
+              <button
+                type="button"
+                onClick={prev}
+                aria-label="Previous slide"
+                className="w-9 h-9 -ml-1 rounded-full flex items-center justify-center text-white/45 active:text-white transition-colors"
+              >
+                <ChevronLeft size={20} strokeWidth={2.5} />
+              </button>
+
+              <div className="flex items-center gap-2" aria-label="Slides">
+                {slides.map((s, i) => {
+                  const active = slideIndex === i;
+                  return (
+                    <button
+                      key={s.num}
+                      type="button"
+                      aria-label={s.label || `Slide ${i + 1}`}
+                      aria-current={active ? 'true' : undefined}
+                      onClick={() => setSlideIndex(i)}
+                      className="h-2.5 rounded-full transition-all duration-300"
+                      style={{
+                        width: active ? 30 : 10,
+                        backgroundColor: active ? accent : 'rgba(255,255,255,0.25)',
+                      }}
+                    />
+                  );
+                })}
+              </div>
+
+              <button
+                type="button"
+                onClick={next}
+                aria-label="Next slide"
+                className="w-9 h-9 rounded-full flex items-center justify-center text-white/45 active:text-white transition-colors"
+              >
+                <ChevronRight size={20} strokeWidth={2.5} />
               </button>
             </div>
           </div>
