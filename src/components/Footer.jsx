@@ -11,7 +11,7 @@ const links = [
   },
   {
     label: 'Telegram',
-    href: 'https://t.me/agrobankpress',
+    href: 'https://t.me/Agrobankjobs',
     icon: 'simple-icons:telegram',
   },
 ];
