@@ -32,7 +32,7 @@ export const translations = {
           badge: 'Salomatlik',
           title: "Sog'liqni saqlash",
           description: "Yillik tibbiy ko'rik va bank ichidagi tibbiy markaz orqali to'liq salomatlik qo'llab-quvvatlovi.",
-          features: ["Yiliga 1 marta bepul tibbiy ko'rik", "Bank ichidagi tibbiy markaz (istalgan vaqtda, bepul)", 'Sport zali (gym)', 'Mental health support'],
+          features: ["Har yili to'liq tibbiy ko'rik", 'Agrobank tibbiy markazi', 'Sport zali (gym)', 'Mental health support'],
         },
         {
           badge: "Ta'lim",
@@ -195,7 +195,7 @@ export const translations = {
           badge: 'Здоровье',
           title: 'Здоровье',
           description: 'Ежегодный медосмотр и поддержка здоровья через медцентр внутри банка.',
-          features: ['Бесплатный медосмотр раз в год', 'Медцентр в банке (в любое время, бесплатно)', 'Спортзал (gym)', 'Mental health support'],
+          features: ['Ежегодный полный медосмотр', 'Медцентр Agrobank', 'Спортзал (gym)', 'Mental health support'],
         },
         {
           badge: 'Образование',
