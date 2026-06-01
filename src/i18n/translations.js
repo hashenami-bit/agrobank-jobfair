@@ -31,8 +31,8 @@ export const translations = {
         {
           badge: 'Salomatlik',
           title: "Sog'liqni saqlash",
-          description: "Tibbiy sug'urta va salomatlikni qo'llab-quvvatlash dasturlari.",
-          features: ["Tibbiy sug'urta", "Bepul tibbiy ko'rik", 'Sport zali (gym)', 'Mental health support'],
+          description: "Yillik tibbiy ko'rik va bank ichidagi tibbiy markaz orqali to'liq salomatlik qo'llab-quvvatlovi.",
+          features: ["Yiliga 1 marta bepul tibbiy ko'rik", "Bank ichidagi tibbiy markaz (istalgan vaqtda, bepul)", 'Sport zali (gym)', 'Mental health support'],
         },
         {
           badge: "Ta'lim",
@@ -55,8 +55,8 @@ export const translations = {
       ],
       faqs: [
         {
-          question: "Tibbiy sug'urta qanday qoplab beradi?",
-          answer: "Bank xodimlari va ularning oila a'zolari (turmush o'rtog'i va farzandlari) uchun to'liq tibbiy sug'urta paketi mavjud. Statsionar va ambulator davolanish, dorilar va profilaktik tekshiruvlar qoplab beriladi.",
+          question: "Bank qanday tibbiy yordam taqdim etadi?",
+          answer: "Bank xodimlari uchun yiliga 1 marta bepul tibbiy ko'rik tashkil etiladi. Bundan tashqari, bank ichida tibbiy markaz faoliyat yuritadi — unga ish vaqtida istalgan paytda bepul murojaat qilishingiz mumkin.",
         },
         {
           question: "Ta'lim uchun moliyaviy yordam bormi?",
@@ -95,11 +95,11 @@ export const translations = {
         },
         {
           question: 'Suhbat jarayoni qanday bosqichlardan iborat?',
-          answer: '1) HR bilan tanishuv (30 daqiqa) → 2) Texnik suhbat jamoangiz lideri bilan (60-90 daqiqa) → 3) Test topshiriq (1-3 kun ichida bajariladi) → 4) Yakuniy suhbat IT direktori bilan → 5) Taklif xati va shartnoma.',
+          answer: '1) HR bilan dastlabki tanishuv suhbati (30 daqiqa) → 2) Jamoa lideri bilan texnik suhbat (60-90 daqiqa) → 3) IT direktori bilan yakuniy suhbat → 4) Taklif xati va shartnomani rasmiylashtirish.',
         },
         {
           question: 'Test topshiriqlar bormi va qancha vaqt oladi?',
-          answer: "Ha, deyarli barcha IT lavozimlar uchun amaliy test topshiriq mavjud. Pozitsiyaga qarab 4-16 soat o'rtasida vaqt talab etadi.",
+          answer: "Ha, ammo amaliy test topshiriq faqat ayrim IT lavozimlar uchun talab qilinadi. Bunday hollarda pozitsiyaga qarab 4-16 soat o'rtasida vaqt oladi.",
         },
         {
           question: 'Onboarding qancha davom etadi?',
@@ -194,8 +194,8 @@ export const translations = {
         {
           badge: 'Здоровье',
           title: 'Здоровье',
-          description: 'Медицинская страховка и программы поддержки здоровья.',
-          features: ['Медицинская страховка', 'Бесплатный медосмотр', 'Спортзал (gym)', 'Mental health support'],
+          description: 'Ежегодный медосмотр и поддержка здоровья через медцентр внутри банка.',
+          features: ['Бесплатный медосмотр раз в год', 'Медцентр в банке (в любое время, бесплатно)', 'Спортзал (gym)', 'Mental health support'],
         },
         {
           badge: 'Образование',
@@ -218,8 +218,8 @@ export const translations = {
       ],
       faqs: [
         {
-          question: 'Что покрывает медицинская страховка?',
-          answer: 'Для сотрудников банка и членов их семей (супругов и детей) предусмотрен полный пакет медицинского страхования. Покрываются стационарное и амбулаторное лечение, лекарства и профилактические обследования.',
+          question: 'Какую медицинскую помощь предоставляет банк?',
+          answer: 'Для сотрудников банка раз в год организуется бесплатный медосмотр. Кроме того, внутри банка работает медцентр — обратиться в него можно бесплатно в любое время в течение рабочего дня.',
         },
         {
           question: 'Есть ли финансовая поддержка обучения?',
@@ -258,11 +258,11 @@ export const translations = {
         },
         {
           question: 'Из каких этапов состоит процесс собеседования?',
-          answer: '1) Знакомство с HR (30 минут) → 2) Техническое интервью с тимлидом (60-90 минут) → 3) Тестовое задание (выполняется за 1-3 дня) → 4) Финальное интервью с IT-директором → 5) Оффер и контракт.',
+          answer: '1) Первичное знакомство с HR (30 минут) → 2) Техническое интервью с тимлидом (60-90 минут) → 3) Финальное интервью с IT-директором → 4) Оффер и оформление контракта.',
         },
         {
           question: 'Есть ли тестовые задания и сколько они занимают?',
-          answer: 'Да, практически на все IT-позиции предусмотрено практическое тестовое задание. В зависимости от позиции занимает от 4 до 16 часов.',
+          answer: 'Да, но практическое тестовое задание требуется только для отдельных IT-позиций. В таких случаях в зависимости от позиции занимает от 4 до 16 часов.',
         },
         {
           question: 'Сколько длится онбординг?',
