@@ -112,7 +112,7 @@ export default function Vacancies() {
       {/* Header */}
       <div ref={headerRef} className="text-center mb-20">
         <div
-          className="flex items-center justify-center space-x-4 mb-4 text-[0.65rem] tracking-widest uppercase font-medium clip-slide delay-100"
+          className="flex items-center justify-center space-x-4 mb-4 text-sm tracking-widest uppercase font-medium clip-slide delay-100"
           style={{ color: accent }}
         >
           <span>{slide.num}</span>

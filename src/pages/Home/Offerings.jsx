@@ -3,6 +3,7 @@ import { HeartPulse, GraduationCap, TrendingUp, Gift, ArrowUpRight } from 'lucid
 import { useReveal } from '../../hooks/useReveal';
 import MaskedText from '../../components/MaskedText';
 import FAQ from '../../components/FAQ';
+import AboutBank from './AboutBank';
 import { useSlide } from '../../contexts/SlideContext';
 import { useLanguage } from '../../contexts/LanguageContext';
 
@@ -37,10 +38,16 @@ export default function Offerings() {
       <div className="absolute top-0 bottom-0 left-1/3 w-px bg-white/[0.03] -z-10"></div>
       <div className="absolute top-0 bottom-0 right-1/3 w-px bg-white/[0.03] -z-10"></div>
 
+      {/* About Agrobank — mission, strategy, values, stats */}
+      <AboutBank />
+
+      {/* Divider */}
+      <div className="max-w-6xl mx-auto mb-20 h-px bg-white/[0.07]"></div>
+
       {/* Header */}
       <div ref={headerRef} className="text-center mb-20">
         <div
-          className="flex items-center justify-center space-x-4 mb-4 text-[0.65rem] tracking-widest uppercase font-medium clip-slide delay-100"
+          className="flex items-center justify-center space-x-4 mb-4 text-sm tracking-widest uppercase font-medium clip-slide delay-100"
           style={{ color: accent }}
         >
           <span>{slide.num}</span>

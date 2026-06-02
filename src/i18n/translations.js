@@ -8,6 +8,36 @@ export const translations = {
       { label: 'Biz haqimizda', heading: 'Biz nimalar taklif etamiz' },
     ],
 
+    about: {
+      kicker: 'Agrobank haqida',
+      heading: 'Missiya va qadriyatlar',
+      stats: [
+        { value: '3 600 000+', label: 'mijozlar' },
+        { value: '170', label: 'filiallar' },
+        { value: '729', label: 'avtomatlashtirilgan 24/7 punktlar' },
+        { value: '24', label: 'bank xizmatlari markazi' },
+        { value: '208', label: 'valyuta ayirboshlash punktlari' },
+        { value: '190', label: "xalqaro pul o'tkazmalari nuqtalari" },
+        { value: '192', label: 'bank kassalari' },
+        { value: '154', label: 'smart ofislar' },
+      ],
+      missionLabel: 'Bank missiyasi',
+      mission: "Mijozlarimizning o'sishi va farovonligiga hissa qo'shish, biznesning barqaror rivojlanishini ta'minlash, shaharlar va tumanlar o'rtasida moliyaviy ko'prik vazifasini bajarish.",
+      strategyLabel: 'Bank strategiyasi',
+      strategy: [
+        "Davlat dasturlarini moliyalashtirishni davom ettirish hamda bankning tijorat biznesini rivojlantirishga alohida e'tibor qaratish",
+        'Operatsion samaradorlikni oshirish',
+        "Barcha hududlarda bank xizmatlarini taqdim etish va shu bo'yicha yetakchi bo'lish",
+      ],
+      valuesLabel: 'Qadriyatlar',
+      values: [
+        { title: 'Ishonch', desc: "Mijozlar, xodimlar va aksiyadorlar ishonchini ta'minlash" },
+        { title: 'Yetakchilik', desc: "Mijozlarga xizmat ko'rsatishda doimo yetakchi bo'lish" },
+        { title: "O'zaro manfaatli hamkorlik", desc: 'Mijozlarimiz farovonligini va bank biznesi rentabelligini yaxshilaydigan yechimlarni taklif etish' },
+        { title: 'Ijtimoiy rivojlanish', desc: "Obodlik va taraqqiyotni targ'ib qilish, savodxonlikni oshirish va mintaqalarni rivojlantirishga hissa qo'shish" },
+      ],
+    },
+
     common: {
       batafsil: 'Batafsil',
       faqHeading: "Tez-tez so'raladigan savollar",
@@ -32,7 +62,7 @@ export const translations = {
           badge: 'Salomatlik',
           title: "Sog'liqni saqlash",
           description: "Yillik tibbiy ko'rik va bank ichidagi tibbiy markaz orqali to'liq salomatlik qo'llab-quvvatlovi.",
-          features: ["Har yili to'liq tibbiy ko'rik", 'Agrobank tibbiy markazi', 'Sport zali (gym)', 'Mental health support'],
+          features: ["Har yili to'liq tibbiy check-up", 'Agrobank ichki medpunkti', 'Sport zali (gym)'],
         },
         {
           badge: "Ta'lim",
@@ -60,7 +90,7 @@ export const translations = {
         },
         {
           question: "Ta'lim uchun moliyaviy yordam bormi?",
-          answer: "Ha. Online kurslar (Coursera, Udemy, Pluralsight), xalqaro sertifikatlar (AWS, Google Cloud, PMP) va konferensiyalar uchun yillik o'qish budjeti ajratiladi. Til kurslari ham qo'llab-quvvatlanadi.",
+          answer: "Ha, bank tomonidan xodimlar malakasini oshirish uchun budjet ajratiladi. Ushbu mablag' kasbiy kurslar, treninglar va sertifikatlashtirish dasturlari uchun sarflanadi.",
         },
         {
           question: "Karyera o'sishi qanday tartibda kuzatiladi?",
@@ -103,7 +133,7 @@ export const translations = {
         },
         {
           question: 'Onboarding qancha davom etadi?',
-          answer: "Yangi xodimlar uchun 2 hafta davom etadigan onboarding dasturi mavjud. Bu davrda kompaniya bilan tanishuv, texnik stack va loyiha asoslari bo'yicha o'qitish va mentor bilan ishlash o'tkaziladi.",
+          answer: "Yangi xodimlar uchun ikki haftalik onboarding dasturi ko'zda tutilgan. Bu davrda kompaniya bilan tanishish, shuningdek, tizimlarga ulanish va kirish huquqini berish amalga oshiriladi.",
         },
       ],
     },
@@ -171,6 +201,36 @@ export const translations = {
       { label: 'О нас', heading: 'Что мы предлагаем' },
     ],
 
+    about: {
+      kicker: 'О банке Agrobank',
+      heading: 'Миссия и ценности',
+      stats: [
+        { value: '3 600 000+', label: 'клиентов' },
+        { value: '170', label: 'филиалов' },
+        { value: '729', label: 'автоматизированных пунктов 24/7' },
+        { value: '24', label: 'центра банковских услуг' },
+        { value: '208', label: 'пунктов обмена валют' },
+        { value: '190', label: 'пунктов международных переводов' },
+        { value: '192', label: 'банковских касс' },
+        { value: '154', label: 'смарт-офисов' },
+      ],
+      missionLabel: 'Миссия банка',
+      mission: 'Вносить вклад в рост и благополучие наших клиентов, обеспечивать устойчивое развитие бизнеса и быть финансовым мостом между городами и районами.',
+      strategyLabel: 'Стратегия банка',
+      strategy: [
+        'Продолжать финансирование государственных программ и уделять особое внимание развитию коммерческого бизнеса банка',
+        'Повышение операционной эффективности',
+        'Предоставление банковских услуг во всех регионах и лидерство в этом направлении',
+      ],
+      valuesLabel: 'Ценности',
+      values: [
+        { title: 'Доверие', desc: 'Обеспечение доверия клиентов, сотрудников и акционеров' },
+        { title: 'Лидерство', desc: 'Всегда быть лидером в обслуживании клиентов' },
+        { title: 'Взаимовыгодное партнёрство', desc: 'Решения, повышающие благополучие клиентов и рентабельность банковского бизнеса' },
+        { title: 'Социальное развитие', desc: 'Содействие благоустройству и прогрессу, повышение грамотности и развитие регионов' },
+      ],
+    },
+
     common: {
       batafsil: 'Подробнее',
       faqHeading: 'Часто задаваемые вопросы',
@@ -195,7 +255,7 @@ export const translations = {
           badge: 'Здоровье',
           title: 'Здоровье',
           description: 'Ежегодный медосмотр и поддержка здоровья через медцентр внутри банка.',
-          features: ['Ежегодный полный медосмотр', 'Медцентр Agrobank', 'Спортзал (gym)', 'Mental health support'],
+          features: ['Ежегодный полный медицинский чек-ап', 'Внутренний медпункт в Агробанке', 'Спортзал (gym)'],
         },
         {
           badge: 'Образование',
@@ -223,7 +283,7 @@ export const translations = {
         },
         {
           question: 'Есть ли финансовая поддержка обучения?',
-          answer: 'Да. Выделяется годовой бюджет на онлайн-курсы (Coursera, Udemy, Pluralsight), международные сертификаты (AWS, Google Cloud, PMP) и конференции. Также поддерживаются языковые курсы.',
+          answer: 'Да, со стороны банка выделяется бюджет на повышение квалификации сотрудников. Эти средства направляются на профессиональные курсы, тренинги и программы сертификации.',
         },
         {
           question: 'Как отслеживается карьерный рост?',
@@ -266,7 +326,7 @@ export const translations = {
         },
         {
           question: 'Сколько длится онбординг?',
-          answer: 'Для новых сотрудников предусмотрена двухнедельная программа онбординга. В этот период проводится знакомство с компанией, обучение техническому стеку и основам проекта, а также работа с ментором.',
+          answer: 'Для новых сотрудников предусмотрена двухнедельная программа онбординга. В этот период проводится знакомство с компанией, а также выдача доступов и подключение к системам.',
         },
       ],
     },
