@@ -50,7 +50,7 @@ export const translations = {
           badge: 'Bonuslar',
           title: 'Bonuslar va imtiyozlar',
           description: 'Yillik bonuslar va xodimlar uchun maxsus imtiyozlar paketi.',
-          features: ['Yillik bonus + davlat bayramlari uchun premiya', 'Bepul avtoturargoh', 'Zamonaviy ofis', "Eng so'nggi texnologiyalar"],
+          features: ['Davlat bayramlariga premiya va bonuslar', 'Bepul avtoturargoh', 'Zamonaviy ofis', "Eng so'nggi texnologiyalar"],
         },
       ],
       faqs: [
@@ -68,7 +68,7 @@ export const translations = {
         },
         {
           question: 'Yillik bonus tizimi qanday ishlaydi?',
-          answer: "Yillik bonus xodimning shaxsiy natijalari (50%), jamoa natijalari (30%) va kompaniya umumiy natijalari (20%) asosida hisoblanadi. Eng yaxshi natijalar uchun davlat bayramlari premiyasi va sayohat bonuslari ham beriladi.",
+          answer: "Yillik bonus xodimning shaxsiy natijalari (50%), jamoa natijalari (30%) va kompaniya umumiy natijalari (20%) asosida hisoblanadi. Eng yaxshi natijalar uchun davlat bayramlariga premiya va bonuslar, shuningdek sayohat bonuslari beriladi.",
         },
       ],
     },
@@ -213,7 +213,7 @@ export const translations = {
           badge: 'Бонусы',
           title: 'Бонусы и льготы',
           description: 'Ежегодные бонусы и специальный пакет льгот для сотрудников.',
-          features: ['Годовой бонус + премия к государственным праздникам', 'Бесплатная парковка', 'Современный офис', 'Современные технологии'],
+          features: ['Премии и бонусы к государственным праздникам', 'Бесплатная парковка', 'Современный офис', 'Современные технологии'],
         },
       ],
       faqs: [
@@ -231,7 +231,7 @@ export const translations = {
         },
         {
           question: 'Как работает система годовых бонусов?',
-          answer: 'Годовой бонус рассчитывается на основе личных результатов сотрудника (50%), результатов команды (30%) и общих результатов компании (20%). За лучшие результаты также выплачивается премия к государственным праздникам и тревел-бонусы.',
+          answer: 'Годовой бонус рассчитывается на основе личных результатов сотрудника (50%), результатов команды (30%) и общих результатов компании (20%). За лучшие результаты выплачиваются премии и бонусы к государственным праздникам, а также тревел-бонусы.',
         },
       ],
     },
