@@ -68,7 +68,7 @@ export const translations = {
         },
         {
           question: 'Yillik bonus tizimi qanday ishlaydi?',
-          answer: "Yillik bonus tizimi doirasida xodimlarga davlat bayramlari munosabati bilan premiya va bonuslar beriladi. Bu to'lovlar yil davomidagi barcha rasmiy bayramlarda amalga oshiriladi.",
+          answer: "Yillik bonus tizimi doirasida xodimlarga davlat bayramlari munosabati bilan premiya va bonuslar beriladi. Bundan tashqari, xodimlarga sayohat bonuslari ham beriladi.",
         },
       ],
     },
@@ -231,7 +231,7 @@ export const translations = {
         },
         {
           question: 'Как работает система годовых бонусов?',
-          answer: 'В рамках системы годовых бонусов сотрудникам выплачиваются премии и бонусы к государственным праздникам. Эти выплаты производятся по всем официальным праздникам в течение года.',
+          answer: 'В рамках системы годовых бонусов сотрудникам выплачиваются премии и бонусы к государственным праздникам. Кроме того, предоставляются тревел-бонусы.',
         },
       ],
     },
