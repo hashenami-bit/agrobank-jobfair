@@ -68,7 +68,7 @@ export const translations = {
         },
         {
           question: 'Yillik bonus tizimi qanday ishlaydi?',
-          answer: "Yillik bonus xodimning shaxsiy natijalari (50%), jamoa natijalari (30%) va kompaniya umumiy natijalari (20%) asosida hisoblanadi. Eng yaxshi natijalar uchun davlat bayramlariga premiya va bonuslar, shuningdek sayohat bonuslari beriladi.",
+          answer: "Yillik bonus tizimi doirasida xodimlarga davlat bayramlari munosabati bilan premiya va bonuslar beriladi. Bu to'lovlar yil davomidagi barcha rasmiy bayramlarda amalga oshiriladi.",
         },
       ],
     },
@@ -231,7 +231,7 @@ export const translations = {
         },
         {
           question: 'Как работает система годовых бонусов?',
-          answer: 'Годовой бонус рассчитывается на основе личных результатов сотрудника (50%), результатов команды (30%) и общих результатов компании (20%). За лучшие результаты выплачиваются премии и бонусы к государственным праздникам, а также тревел-бонусы.',
+          answer: 'В рамках системы годовых бонусов сотрудникам выплачиваются премии и бонусы к государственным праздникам. Эти выплаты производятся по всем официальным праздникам в течение года.',
         },
       ],
     },
