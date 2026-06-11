@@ -26,10 +26,10 @@ export default function Navbar() {
 
   return (
     <nav className={clsx(
-      "sticky top-0 w-full max-w-7xl px-6 flex items-center justify-between z-50 transition-all duration-300",
+      "sticky top-0 w-full max-w-7xl px-6 flex flex-wrap items-center justify-between z-50 transition-all duration-300",
       scrolled
         ? "py-3 bg-[#030303]/80 backdrop-blur-md border-b border-white/[0.1] shadow-lg"
-        : "pt-8 md:pt-[88px] pb-4 bg-transparent border-b border-white/[0.05]"
+        : "pt-8 md:pt-[88px] pb-2.5 md:pb-4 bg-transparent border-b border-white/[0.05]"
     )}>
       {/* Corner Brackets */}
       <div className={clsx(
@@ -86,6 +86,28 @@ export default function Navbar() {
           })}
         </div>
         <LanguageToggle />
+      </div>
+
+      {/* Mobile slide tabs — full-width second row between the logo and the hero */}
+      <div className="md:hidden w-full flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 pt-5">
+        {slides.map((s, i) => {
+          const active = slideIndex === i;
+          return (
+            <button
+              key={s.num}
+              type="button"
+              onClick={() => goToSlide(i)}
+              className={clsx(
+                "shrink-0 whitespace-nowrap inline-flex items-center px-2.5 py-1.5 rounded-full text-xs font-semibold uppercase transition-colors cursor-pointer",
+                active
+                  ? "border border-white text-white"
+                  : "text-white/65 hover:text-white"
+              )}
+            >
+              {s.label}
+            </button>
+          );
+        })}
       </div>
     </nav>
   );

@@ -48,7 +48,7 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 w-2 h-2 border-l border-b border-white/20 z-20"></div>
       <div className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-white/20 z-20"></div>
 
-      <div className="relative md:absolute inset-0 grid grid-cols-12 gap-6 px-6 h-auto md:h-full items-center py-16 md:py-0">
+      <div className="relative md:absolute inset-0 grid grid-cols-12 gap-6 px-6 h-auto md:h-full items-center pt-2.5 pb-12 md:py-0">
 
         {/* Left Visual Area — desktop only (mobile uses a calm inline image instead of the ring) */}
         <div className="col-span-12 md:col-span-7 hidden md:flex h-full relative items-center justify-center clip-slide delay-200">

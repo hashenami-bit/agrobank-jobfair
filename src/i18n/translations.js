@@ -68,7 +68,7 @@ export const translations = {
           badge: "Ta'lim",
           title: "Ta'lim va rivojlanish",
           description: "Ko'nikma rivojlantirish va eng so'nggi texnologiyalar bilan ishlash imkoniyati.",
-          features: ['Online kurslar', 'Xalqaro sertifikatlar', 'GPU klasterlari (AI/ML)', 'Mentorlik dasturi'],
+          features: ['Online kurslar', 'Xalqaro sertifikatlar', 'GPU klasterlari (AI/ML)', 'Mentorlik dasturi', "Agile metodologiyasi bo'yicha kompetensiyalarni rivojlantirish"],
         },
         {
           badge: 'Karyera',
@@ -94,11 +94,11 @@ export const translations = {
         },
         {
           question: "Karyera o'sishi qanday tartibda kuzatiladi?",
-          answer: "Har 6 oyda performance review o'tkaziladi. Aniq KPI lar va ko'nikmalar matritsasi asosida lavozim ko'tarilishi va maosh oshirilishi belgilanadi. Eng faol xodimlar uchun yillik 'Top Talent' dasturi mavjud.",
+          answer: "Karyera o'sishi har bir xodim bilan uning ko'rsatkichlari va natijalari asosida individual tarzda muhokama qilinadi.",
         },
         {
           question: 'Yillik bonus tizimi qanday ishlaydi?',
-          answer: "Yillik bonus tizimi doirasida xodimlarga davlat bayramlari munosabati bilan premiya va bonuslar beriladi. Bundan tashqari, xodimlarga sayohat bonuslari ham beriladi.",
+          answer: "Yillik bonus tizimi doirasida xodimlarga davlat bayramlari munosabati bilan premiya va bonuslar beriladi.",
         },
       ],
     },
@@ -261,7 +261,7 @@ export const translations = {
           badge: 'Образование',
           title: 'Образование и развитие',
           description: 'Развитие навыков и работа с самыми современными технологиями.',
-          features: ['Онлайн-курсы', 'Международные сертификаты', 'GPU-кластеры (AI/ML)', 'Программа менторства'],
+          features: ['Онлайн-курсы', 'Международные сертификаты', 'GPU-кластеры (AI/ML)', 'Программа менторства', 'Развитие компетенций по методологии Agile'],
         },
         {
           badge: 'Карьера',
@@ -287,11 +287,11 @@ export const translations = {
         },
         {
           question: 'Как отслеживается карьерный рост?',
-          answer: "Каждые 6 месяцев проводится performance review. Повышение в должности и зарплате определяется на основе чётких KPI и матрицы навыков. Для самых активных сотрудников доступна ежегодная программа 'Top Talent'.",
+          answer: 'Карьерный рост обсуждается с каждым сотрудником индивидуально, исходя из его показателей и результатов.',
         },
         {
           question: 'Как работает система годовых бонусов?',
-          answer: 'В рамках системы годовых бонусов сотрудникам выплачиваются премии и бонусы к государственным праздникам. Кроме того, предоставляются тревел-бонусы.',
+          answer: 'В рамках системы годовых бонусов сотрудникам выплачиваются премии и бонусы к государственным праздникам.',
         },
       ],
     },

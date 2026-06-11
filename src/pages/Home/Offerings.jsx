@@ -1,5 +1,5 @@
 ﻿import { useState } from 'react';
-import { HeartPulse, GraduationCap, TrendingUp, Gift, ArrowUpRight } from 'lucide-react';
+import { HeartPulse, GraduationCap, TrendingUp, Gift } from 'lucide-react';
 import { useReveal } from '../../hooks/useReveal';
 import MaskedText from '../../components/MaskedText';
 import FAQ from '../../components/FAQ';
@@ -138,16 +138,6 @@ export default function Offerings() {
                       </li>
                     ))}
                   </ul>
-
-                  {/* Batafsil */}
-                  <button
-                    type="button"
-                    onClick={(e) => e.stopPropagation()}
-                    className="btn-pill-filled mt-auto px-6 py-3 rounded-full text-[0.7rem] tracking-widest uppercase font-semibold inline-flex items-center gap-2 relative z-30 cursor-pointer"
-                  >
-                    {t('common.batafsil')}
-                    <ArrowUpRight size={14} strokeWidth={2.5} />
-                  </button>
                 </div>
               </div>
             );
