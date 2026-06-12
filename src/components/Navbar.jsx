@@ -26,7 +26,7 @@ export default function Navbar() {
 
   return (
     <nav className={clsx(
-      "sticky top-0 w-full max-w-7xl px-6 flex flex-wrap items-center justify-between z-50 transition-all duration-300",
+      "relative md:sticky md:top-0 w-full max-w-7xl px-6 flex flex-wrap items-center justify-between z-50 transition-all duration-300",
       scrolled
         ? "py-3 bg-[#030303]/80 backdrop-blur-md border-b border-white/[0.1] shadow-lg"
         : "pt-8 md:pt-[88px] pb-2.5 md:pb-4 bg-transparent border-b border-white/[0.05]"

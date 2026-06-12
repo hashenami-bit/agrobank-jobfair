@@ -41,7 +41,7 @@ export default function Hero() {
       ref={revealRef}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
-      className="w-full max-w-7xl min-h-[78vh] md:min-h-[90vh] relative flex items-center border-b border-white/[0.05] overflow-hidden accent-transition"
+      className="w-full max-w-7xl min-h-[calc(100svh-115px)] md:min-h-[90vh] relative flex items-center border-b border-white/[0.05] overflow-hidden accent-transition"
       style={{ '--accent': accent }}
     >
       {/* Corner Brackets */}

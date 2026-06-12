@@ -1,5 +1,5 @@
 ﻿import { useState } from 'react';
-import { Cctv, Satellite, Mic, BarChart3, ArrowUpRight, Sparkles } from 'lucide-react';
+import { Cctv, Satellite, Mic, BarChart3, Sparkles } from 'lucide-react';
 import { useReveal } from '../../hooks/useReveal';
 import MaskedText from '../../components/MaskedText';
 import LiveIndicator from '../../components/LiveIndicator';
@@ -153,16 +153,6 @@ export default function Projects() {
                       </li>
                     ))}
                   </ul>
-
-                  {/* Batafsil button — primary CTA */}
-                  <button
-                    type="button"
-                    onClick={(e) => e.stopPropagation()}
-                    className="btn-pill-filled mt-auto px-6 py-3 rounded-full text-[0.7rem] tracking-widest uppercase font-semibold inline-flex items-center gap-2 relative z-30 cursor-pointer"
-                  >
-                    {t('common.batafsil')}
-                    <ArrowUpRight size={14} strokeWidth={2.5} />
-                  </button>
                 </div>
               </div>
             );
