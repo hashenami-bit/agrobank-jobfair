@@ -18,7 +18,7 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer className="w-full max-w-7xl border-t border-white/[0.05] mt-20 relative z-10">
+    <footer className="w-full max-w-7xl border-t border-white/[0.05] mt-10 md:mt-20 relative z-10">
       <div className="px-8 py-5 flex justify-center items-center gap-8 text-xs text-white/50">
         {links.map((l) => (
           <a

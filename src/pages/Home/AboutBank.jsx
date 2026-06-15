@@ -15,9 +15,9 @@ export default function AboutBank() {
   const values = about.values || [];
 
   return (
-    <div className="w-full mb-28" style={{ '--accent': accent }}>
+    <div className="w-full mb-16 md:mb-28" style={{ '--accent': accent }}>
       {/* Header */}
-      <div className="text-center mb-14">
+      <div className="text-center mb-8 md:mb-14">
         <div
           className="flex items-center justify-center space-x-4 mb-4 text-sm tracking-widest uppercase font-medium"
           style={{ color: accent }}
@@ -32,7 +32,7 @@ export default function AboutBank() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20 max-w-6xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 md:mb-20 max-w-6xl mx-auto">
         {stats.map((s) => (
           <div
             key={s.label}
@@ -50,7 +50,7 @@ export default function AboutBank() {
       </div>
 
       {/* Mission */}
-      <div className="max-w-3xl mx-auto text-center mb-20">
+      <div className="max-w-3xl mx-auto text-center mb-12 md:mb-20">
         <div className="text-sm tracking-widest uppercase mb-4" style={{ color: accent }}>
           {about.missionLabel}
         </div>

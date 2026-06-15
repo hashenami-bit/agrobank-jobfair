@@ -9,8 +9,8 @@ export default function FAQ({ faqs, accent = '#f43f5e', label = 'FAQ', heading }
   const supportLabel = t('common.faqKicker');
 
   return (
-    <section className="w-full max-w-3xl mx-auto px-6 py-24 flex flex-col relative z-10">
-      <div className="mb-12 w-full text-center flex flex-col items-center">
+    <section className="w-full max-w-3xl mx-auto px-6 py-10 md:py-24 flex flex-col relative z-10">
+      <div className="mb-8 md:mb-12 w-full text-center flex flex-col items-center">
         <div
           className="flex items-center space-x-4 mb-4 text-sm tracking-widest uppercase font-medium"
           style={{ color: accent }}

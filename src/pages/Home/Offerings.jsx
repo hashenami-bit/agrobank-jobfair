@@ -31,7 +31,7 @@ export default function Offerings() {
   return (
     <section
       id="slide-content"
-      className="w-full max-w-7xl py-32 px-6 relative border-b border-white/[0.05]"
+      className="w-full max-w-7xl py-16 md:py-32 px-6 relative border-b border-white/[0.05]"
       style={{ '--accent': accent, '--card-hover-border': `${accent}66` }}
     >
       {/* Vertical guide lines */}
@@ -42,10 +42,10 @@ export default function Offerings() {
       <AboutBank />
 
       {/* Divider */}
-      <div className="max-w-6xl mx-auto mb-20 h-px bg-white/[0.07]"></div>
+      <div className="max-w-6xl mx-auto mb-12 md:mb-20 h-px bg-white/[0.07]"></div>
 
       {/* Header */}
-      <div ref={headerRef} className="text-center mb-20">
+      <div ref={headerRef} className="text-center mb-10 md:mb-20">
         <div
           className="flex items-center justify-center space-x-4 mb-4 text-sm tracking-widest uppercase font-medium clip-slide delay-100"
           style={{ color: accent }}
@@ -60,7 +60,7 @@ export default function Offerings() {
       </div>
 
       {/* Branch heading */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-6 md:mb-12">
         <h3 className="font-agro-expanded text-3xl md:text-4xl text-white font-bold tracking-tight">
           {t('offerings.branchHeading')}
         </h3>
@@ -68,15 +68,17 @@ export default function Offerings() {
 
       {/* Cards */}
       <div ref={gridRef} className="relative max-w-6xl mx-auto holodex-container">
-        {/* Connector lines */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-white/20 clip-slide delay-200"></div>
-        <div className="absolute top-12 left-[12.5%] right-[12.5%] h-px bg-white/20 clip-slide delay-300"></div>
-        <div className="absolute top-12 left-[12.5%] w-px h-12 bg-white/20 clip-slide delay-400"></div>
-        <div className="absolute top-12 left-[37.5%] w-px h-12 bg-white/20 clip-slide delay-400"></div>
-        <div className="absolute top-12 left-[62.5%] w-px h-12 bg-white/20 clip-slide delay-400"></div>
-        <div className="absolute top-12 left-[87.5%] w-px h-12 bg-white/20 clip-slide delay-400"></div>
+        {/* Connector lines — desktop only (they map the 4-column layout) */}
+        <div className="hidden md:block">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-white/20 clip-slide delay-200"></div>
+          <div className="absolute top-12 left-[12.5%] right-[12.5%] h-px bg-white/20 clip-slide delay-300"></div>
+          <div className="absolute top-12 left-[12.5%] w-px h-12 bg-white/20 clip-slide delay-400"></div>
+          <div className="absolute top-12 left-[37.5%] w-px h-12 bg-white/20 clip-slide delay-400"></div>
+          <div className="absolute top-12 left-[62.5%] w-px h-12 bg-white/20 clip-slide delay-400"></div>
+          <div className="absolute top-12 left-[87.5%] w-px h-12 bg-white/20 clip-slide delay-400"></div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-8 md:pt-24">
           {offeringsMeta.map((m, index) => {
             const o = offerings[index] || {};
             const isActive = activeIndex === index;
