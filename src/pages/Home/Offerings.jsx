@@ -4,6 +4,7 @@ import { useReveal } from '../../hooks/useReveal';
 import MaskedText from '../../components/MaskedText';
 import FAQ from '../../components/FAQ';
 import AboutBank from './AboutBank';
+import EventsCarousel from './EventsCarousel';
 import { useSlide } from '../../contexts/SlideContext';
 import { useLanguage } from '../../contexts/LanguageContext';
 
@@ -146,6 +147,9 @@ export default function Offerings() {
           })}
         </div>
       </div>
+
+      {/* Events photo carousel (placeholder frames for now) */}
+      <EventsCarousel />
 
       <FAQ faqs={offerFaqs} accent={accent} label={t('offerings.faqLabel')} heading={t('common.faqHeading')} />
     </section>
