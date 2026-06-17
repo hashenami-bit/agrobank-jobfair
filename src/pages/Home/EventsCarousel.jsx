@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useSlide } from '../../contexts/SlideContext';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -14,9 +15,11 @@ export default function EventsCarousel() {
   const accent = slide.accent;
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [zoom, setZoom] = useState(false);
 
   const t = {
     kicker: lang === 'ru' ? 'Галерея' : 'Galereya',
+    close: lang === 'ru' ? 'Закрыть' : 'Yopish',
     heading: lang === 'ru' ? 'Жизнь в банке' : 'Bank hayoti',
     photoHint: lang === 'ru' ? 'Здесь будет фото события' : "Bu yerga tadbir rasmi qo'yiladi",
     title: lang === 'ru' ? 'Название события' : 'Tadbir nomi',
@@ -31,10 +34,10 @@ export default function EventsCarousel() {
   const frames = Array.from({ length: FRAME_COUNT }, (_, i) => i);
 
   useEffect(() => {
-    if (paused) return undefined;
+    if (paused || zoom) return undefined;
     const id = setInterval(() => setIndex((i) => (i + 1) % FRAME_COUNT), INTERVAL);
     return () => clearInterval(id);
-  }, [paused, index]);
+  }, [paused, zoom, index]);
 
   const go = (i) => setIndex((i + FRAME_COUNT) % FRAME_COUNT);
 
@@ -52,10 +55,17 @@ export default function EventsCarousel() {
 
       {/* Carousel */}
       <div
-        className="relative rounded-3xl overflow-hidden border border-white/10 aspect-[16/10] md:aspect-[21/9]"
+        className="relative rounded-3xl overflow-hidden border border-white/10 aspect-[16/10] md:aspect-[21/9] cursor-zoom-in"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
+        onClick={() => setZoom(true)}
       >
+        {/* Tap-to-enlarge hint */}
+        <div className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white/80 pointer-events-none">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3" />
+          </svg>
+        </div>
         {frames.map((i) => (
           <div
             key={i}
@@ -96,7 +106,7 @@ export default function EventsCarousel() {
         {/* Arrows */}
         <button
           type="button"
-          onClick={() => go(index - 1)}
+          onClick={(e) => { e.stopPropagation(); go(index - 1); }}
           aria-label="Previous"
           className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white/80 hover:text-white transition-colors z-10 cursor-pointer"
         >
@@ -104,7 +114,7 @@ export default function EventsCarousel() {
         </button>
         <button
           type="button"
-          onClick={() => go(index + 1)}
+          onClick={(e) => { e.stopPropagation(); go(index + 1); }}
           aria-label="Next"
           className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white/80 hover:text-white transition-colors z-10 cursor-pointer"
         >
@@ -126,6 +136,50 @@ export default function EventsCarousel() {
           />
         ))}
       </div>
+
+      {/* Full-screen lightbox — tap photo to enlarge (portaled to body so it escapes transformed ancestors) */}
+      {zoom && createPortal(
+        <div
+          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
+          onClick={() => setZoom(false)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            type="button"
+            onClick={() => setZoom(false)}
+            aria-label={t.close}
+            className="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-2xl leading-none cursor-pointer z-10"
+          >
+            ✕
+          </button>
+          <div
+            className="relative w-full max-w-3xl aspect-[16/10] rounded-2xl overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+            style={{ background: `linear-gradient(135deg, ${accent}26, #0b0d12 62%)` }}
+          >
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+              <div className="font-agro-expanded font-bold text-6xl md:text-8xl" style={{ color: `${accent}55` }}>
+                {t.photo} {index + 1}
+              </div>
+              <div className="text-sm text-white/40 mt-2">{t.photoHint}</div>
+            </div>
+            <div className="absolute inset-x-0 bottom-0 p-5 md:p-8 bg-gradient-to-t from-black/85 via-black/40 to-transparent text-left">
+              <span
+                className="inline-block text-[0.65rem] tracking-widest uppercase px-2.5 py-1 rounded-full mb-2"
+                style={{ backgroundColor: `${accent}22`, color: accent }}
+              >
+                {t.tag}
+              </span>
+              <h4 className="text-xl md:text-3xl font-bold text-white">
+                {t.title} {index + 1}
+              </h4>
+              <p className="text-sm md:text-base text-white/70 mt-1">{t.text}</p>
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
     </div>
   );
 }
