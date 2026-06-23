@@ -4,9 +4,24 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useSlide } from '../../contexts/SlideContext';
 import { useLanguage } from '../../contexts/LanguageContext';
 
-// PLACEHOLDER carousel — auto-rotates every 3s. Real event photos + captions
-// will replace the placeholder frames later (just swap the `frames` data + add an <img>).
-const FRAME_COUNT = 3;
+import aihackaton from '../../assets/events/aihackaton.webp';
+import chess from '../../assets/events/chess.jpg';
+import football from '../../assets/events/football.jpg';
+import kibersport from '../../assets/events/kibersport.png';
+import mutoala from '../../assets/events/mutoala.jpg';
+import valleyball from '../../assets/events/valleyball.jpg';
+
+// One photo per event. Titles are working drafts; final titles + descriptions
+// (desc currently empty so no caption line shows) come from the client.
+const EVENTS = [
+  { img: aihackaton, alt: 'AI500 hackathon', tag: { uz: 'Hakaton', ru: 'Хакатон' }, title: { uz: 'AI500 Hakaton', ru: 'Хакатон AI500' }, desc: { uz: '', ru: '' } },
+  { img: chess, alt: 'Chess tournament', tag: { uz: 'Sport', ru: 'Спорт' }, title: { uz: 'Shaxmat turniri', ru: 'Шахматный турнир' }, desc: { uz: '', ru: '' } },
+  { img: football, alt: 'World Cup broadcast fan-zone', tag: { uz: 'Translyatsiya', ru: 'Трансляция' }, title: { uz: 'Jahon chempionati translyatsiyasi', ru: 'Трансляция Чемпионата мира' }, desc: { uz: '', ru: '' } },
+  { img: kibersport, alt: 'Cybersport FIFA tournament', tag: { uz: 'Kibersport', ru: 'Киберспорт' }, title: { uz: 'Kibersport turniri', ru: 'Киберспорт-турнир' }, desc: { uz: '', ru: '' } },
+  { img: mutoala, alt: 'Mutolaa reading marathon', tag: { uz: 'Yoshlar', ru: 'Молодёжь' }, title: { uz: 'Mutolaa marafoni', ru: 'Марафон чтения Mutolaa' }, desc: { uz: '', ru: '' } },
+  { img: valleyball, alt: 'Volleyball tournament', tag: { uz: 'Sport', ru: 'Спорт' }, title: { uz: 'Voleybol turniri', ru: 'Турнир по волейболу' }, desc: { uz: '', ru: '' } },
+];
+
 const INTERVAL = 3000;
 
 export default function EventsCarousel() {
@@ -17,45 +32,36 @@ export default function EventsCarousel() {
   const [paused, setPaused] = useState(false);
   const [zoom, setZoom] = useState(false);
 
-  const t = {
-    kicker: lang === 'ru' ? 'Галерея' : 'Galereya',
-    close: lang === 'ru' ? 'Закрыть' : 'Yopish',
-    heading: lang === 'ru' ? 'Жизнь в банке' : 'Bank hayoti',
-    photoHint: lang === 'ru' ? 'Здесь будет фото события' : "Bu yerga tadbir rasmi qo'yiladi",
-    title: lang === 'ru' ? 'Название события' : 'Tadbir nomi',
-    text:
-      lang === 'ru'
-        ? 'Краткое описание события появится здесь.'
-        : "Tadbir haqida qisqacha matn shu yerda bo'ladi.",
-    tag: lang === 'ru' ? 'Событие' : 'Tadbir',
-    photo: lang === 'ru' ? 'ФОТО' : 'RASM',
-  };
-
-  const frames = Array.from({ length: FRAME_COUNT }, (_, i) => i);
+  const N = EVENTS.length;
+  const L = (o) => (lang === 'ru' ? o.ru : o.uz);
+  const heading = lang === 'ru' ? 'Жизнь в банке' : 'Bank hayoti';
+  const kicker = lang === 'ru' ? 'Галерея' : 'Galereya';
+  const closeLabel = lang === 'ru' ? 'Закрыть' : 'Yopish';
 
   useEffect(() => {
     if (paused || zoom) return undefined;
-    const id = setInterval(() => setIndex((i) => (i + 1) % FRAME_COUNT), INTERVAL);
+    const id = setInterval(() => setIndex((i) => (i + 1) % N), INTERVAL);
     return () => clearInterval(id);
-  }, [paused, zoom, index]);
+  }, [paused, zoom, index, N]);
 
-  const go = (i) => setIndex((i + FRAME_COUNT) % FRAME_COUNT);
+  const go = (i) => setIndex((i + N) % N);
+  const cur = EVENTS[index];
 
   return (
     <div className="max-w-5xl mx-auto mt-14 md:mt-24">
       {/* Header */}
       <div className="text-center mb-8 md:mb-10">
         <div className="text-sm tracking-widest uppercase font-medium mb-3" style={{ color: accent }}>
-          {t.kicker}
+          {kicker}
         </div>
         <h3 className="font-agro-expanded text-2xl md:text-4xl text-white font-bold tracking-tight">
-          {t.heading}
+          {heading}
         </h3>
       </div>
 
       {/* Carousel */}
       <div
-        className="relative rounded-3xl overflow-hidden border border-white/10 aspect-[16/10] md:aspect-[21/9] cursor-zoom-in"
+        className="relative rounded-3xl overflow-hidden border border-white/10 aspect-[16/10] md:aspect-[21/9] cursor-zoom-in bg-[#0b0d12]"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
         onClick={() => setZoom(true)}
@@ -66,39 +72,23 @@ export default function EventsCarousel() {
             <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3" />
           </svg>
         </div>
-        {frames.map((i) => (
+
+        {EVENTS.map((e, i) => (
           <div
             key={i}
             className="absolute inset-0 transition-opacity duration-700 ease-in-out"
-            style={{
-              opacity: index === i ? 1 : 0,
-              pointerEvents: index === i ? 'auto' : 'none',
-              background: `linear-gradient(135deg, ${accent}26, #0b0d12 62%)`,
-            }}
+            style={{ opacity: index === i ? 1 : 0, pointerEvents: index === i ? 'auto' : 'none' }}
           >
-            {/* Placeholder hint (replaced by a real <img> later) */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-              <div
-                className="font-agro-expanded font-bold text-5xl md:text-7xl"
-                style={{ color: `${accent}55` }}
-              >
-                {t.photo} {i + 1}
-              </div>
-              <div className="text-xs md:text-sm text-white/40 mt-2">{t.photoHint}</div>
-            </div>
-
-            {/* Caption overlay — shows how real photo text will sit */}
+            <img src={e.img} alt={e.alt} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
             <div className="absolute inset-x-0 bottom-0 p-5 md:p-8 bg-gradient-to-t from-black/85 via-black/40 to-transparent text-left">
               <span
                 className="inline-block text-[0.65rem] tracking-widest uppercase px-2.5 py-1 rounded-full mb-2"
                 style={{ backgroundColor: `${accent}22`, color: accent }}
               >
-                {t.tag}
+                {L(e.tag)}
               </span>
-              <h4 className="text-lg md:text-2xl font-bold text-white">
-                {t.title} {i + 1}
-              </h4>
-              <p className="text-sm md:text-base text-white/70 mt-1 max-w-xl">{t.text}</p>
+              <h4 className="font-agro text-lg md:text-2xl font-bold text-white">{L(e.title)}</h4>
+              {L(e.desc) && <p className="text-sm md:text-base text-white/70 mt-1 max-w-xl">{L(e.desc)}</p>}
             </div>
           </div>
         ))}
@@ -106,7 +96,7 @@ export default function EventsCarousel() {
         {/* Arrows */}
         <button
           type="button"
-          onClick={(e) => { e.stopPropagation(); go(index - 1); }}
+          onClick={(ev) => { ev.stopPropagation(); go(index - 1); }}
           aria-label="Previous"
           className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white/80 hover:text-white transition-colors z-10 cursor-pointer"
         >
@@ -114,7 +104,7 @@ export default function EventsCarousel() {
         </button>
         <button
           type="button"
-          onClick={(e) => { e.stopPropagation(); go(index + 1); }}
+          onClick={(ev) => { ev.stopPropagation(); go(index + 1); }}
           aria-label="Next"
           className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white/80 hover:text-white transition-colors z-10 cursor-pointer"
         >
@@ -123,13 +113,13 @@ export default function EventsCarousel() {
       </div>
 
       {/* Dots */}
-      <div className="flex items-center justify-center gap-2 mt-5">
-        {frames.map((i) => (
+      <div className="flex items-center justify-center gap-2 mt-5 flex-wrap">
+        {EVENTS.map((e, i) => (
           <button
             key={i}
             type="button"
             onClick={() => go(i)}
-            aria-label={`${t.photo} ${i + 1}`}
+            aria-label={L(e.title)}
             aria-current={index === i ? 'true' : undefined}
             className="h-2 rounded-full transition-all duration-300 cursor-pointer"
             style={{ width: index === i ? 28 : 8, backgroundColor: index === i ? accent : 'rgba(255,255,255,0.25)' }}
@@ -137,7 +127,7 @@ export default function EventsCarousel() {
         ))}
       </div>
 
-      {/* Full-screen lightbox — tap photo to enlarge (portaled to body so it escapes transformed ancestors) */}
+      {/* Full-screen lightbox */}
       {zoom && createPortal(
         <div
           className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
@@ -148,33 +138,38 @@ export default function EventsCarousel() {
           <button
             type="button"
             onClick={() => setZoom(false)}
-            aria-label={t.close}
+            aria-label={closeLabel}
             className="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-2xl leading-none cursor-pointer z-10"
           >
             ✕
           </button>
-          <div
-            className="relative w-full max-w-3xl aspect-[16/10] rounded-2xl overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-            style={{ background: `linear-gradient(135deg, ${accent}26, #0b0d12 62%)` }}
+          <button
+            type="button"
+            onClick={(ev) => { ev.stopPropagation(); go(index - 1); }}
+            aria-label="Previous"
+            className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white z-10 cursor-pointer"
           >
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-              <div className="font-agro-expanded font-bold text-6xl md:text-8xl" style={{ color: `${accent}55` }}>
-                {t.photo} {index + 1}
-              </div>
-              <div className="text-sm text-white/40 mt-2">{t.photoHint}</div>
-            </div>
-            <div className="absolute inset-x-0 bottom-0 p-5 md:p-8 bg-gradient-to-t from-black/85 via-black/40 to-transparent text-left">
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            type="button"
+            onClick={(ev) => { ev.stopPropagation(); go(index + 1); }}
+            aria-label="Next"
+            className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white z-10 cursor-pointer"
+          >
+            <ChevronRight size={24} />
+          </button>
+          <div className="relative w-full max-w-4xl" onClick={(ev) => ev.stopPropagation()}>
+            <img src={cur.img} alt={cur.alt} className="w-full max-h-[80vh] object-contain rounded-xl" />
+            <div className="mt-4 text-center">
               <span
                 className="inline-block text-[0.65rem] tracking-widest uppercase px-2.5 py-1 rounded-full mb-2"
                 style={{ backgroundColor: `${accent}22`, color: accent }}
               >
-                {t.tag}
+                {L(cur.tag)}
               </span>
-              <h4 className="text-xl md:text-3xl font-bold text-white">
-                {t.title} {index + 1}
-              </h4>
-              <p className="text-sm md:text-base text-white/70 mt-1">{t.text}</p>
+              <h4 className="font-agro text-xl md:text-2xl font-bold text-white">{L(cur.title)}</h4>
+              {L(cur.desc) && <p className="text-sm md:text-base text-white/70 mt-1">{L(cur.desc)}</p>}
             </div>
           </div>
         </div>,
