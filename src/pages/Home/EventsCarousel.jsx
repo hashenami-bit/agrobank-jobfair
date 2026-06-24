@@ -93,8 +93,8 @@ export default function EventsCarousel() {
               >
                 {L(e.tag)}
               </span>
-              <h4 className="font-agro text-xl md:text-3xl font-bold text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.9)]">{L(e.title)}</h4>
-              {L(e.desc) && <p className="text-sm md:text-lg text-white/90 mt-1.5 max-w-2xl leading-snug [text-shadow:0_1px_10px_rgba(0,0,0,0.95)]">{L(e.desc)}</p>}
+              <h4 className="font-agro text-base md:text-3xl font-bold text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.9)]">{L(e.title)}</h4>
+              {L(e.desc) && <p className="text-xs md:text-lg text-white/90 mt-1 max-w-2xl leading-snug [text-shadow:0_1px_10px_rgba(0,0,0,0.95)]">{L(e.desc)}</p>}
             </div>
           </div>
         ))}

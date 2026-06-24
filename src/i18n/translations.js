@@ -12,7 +12,7 @@ export const translations = {
       kicker: 'Agrobank haqida',
       heading: 'Missiya va qadriyatlar',
       stats: [
-        { value: '3 600 000+', label: 'mijozlar' },
+        { value: '4 500 000+', label: 'mijozlar' },
         { value: '170', label: 'filiallar' },
         { value: '729', label: 'avtomatlashtirilgan 24/7 punktlar' },
         { value: '24', label: 'bank xizmatlari markazi' },
@@ -205,7 +205,7 @@ export const translations = {
       kicker: 'О банке Agrobank',
       heading: 'Миссия и ценности',
       stats: [
-        { value: '3 600 000+', label: 'клиентов' },
+        { value: '4 500 000+', label: 'клиентов' },
         { value: '170', label: 'филиалов' },
         { value: '729', label: 'автоматизированных пунктов 24/7' },
         { value: '24', label: 'центра банковских услуг' },
