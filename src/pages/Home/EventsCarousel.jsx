@@ -9,7 +9,6 @@ import ayollarklublari from '../../assets/events/ayollarklublari.jpg';
 import chess from '../../assets/events/chess.jpg';
 import football from '../../assets/events/football.jpg';
 import jahonchampfan from '../../assets/events/Jahonchempianatimuxlisi.jpg';
-import kibersport from '../../assets/events/kibersport.png';
 import mutoala from '../../assets/events/mutoala.jpg';
 import sportvazirligi from '../../assets/events/sportvazirligi.jpg';
 import valleyball from '../../assets/events/valleyball.jpg';
@@ -23,7 +22,6 @@ const EVENTS = [
   { img: chess, alt: 'Chess tournament', tag: { uz: 'Sport', ru: 'Спорт' }, title: { uz: 'Shaxmat turniri', ru: 'Шахматный турнир' }, desc: { uz: '', ru: '' } },
   { img: football, alt: 'World Cup broadcast fan-zone', tag: { uz: 'Translyatsiya', ru: 'Трансляция' }, title: { uz: 'Jahon chempionati translyatsiyasi', ru: 'Трансляция Чемпионата мира' }, desc: { uz: '', ru: '' } },
   { img: jahonchampfan, alt: 'National team support — Uzbekistan vs Colombia', tag: { uz: 'Muxlislar', ru: 'Болельщики' }, title: { uz: 'Terma jamoa muxlislari', ru: 'Болельщики сборной' }, desc: { uz: '', ru: '' } },
-  { img: kibersport, alt: 'Cybersport FIFA tournament', tag: { uz: 'Kibersport', ru: 'Киберспорт' }, title: { uz: 'Kibersport turniri', ru: 'Киберспорт-турнир' }, desc: { uz: '', ru: '' } },
   { img: mutoala, alt: 'Mutolaa reading marathon', tag: { uz: 'Yoshlar', ru: 'Молодёжь' }, title: { uz: 'Mutolaa marafoni', ru: 'Марафон чтения Mutolaa' }, desc: { uz: '', ru: '' } },
   { img: sportvazirligi, alt: 'Chimgan mountain festival', tag: { uz: 'Festival', ru: 'Фестиваль' }, title: { uz: "Chimgan tog' festivali", ru: 'Горный фестиваль Чимган' }, desc: { uz: '', ru: '' } },
   { img: valleyball, alt: 'Volleyball tournament', tag: { uz: 'Sport', ru: 'Спорт' }, title: { uz: 'Voleybol turniri', ru: 'Турнир по волейболу' }, desc: { uz: '', ru: '' } },
