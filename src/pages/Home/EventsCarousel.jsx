@@ -5,21 +5,29 @@ import { useSlide } from '../../contexts/SlideContext';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 import aihackaton from '../../assets/events/aihackaton.webp';
+import ayollarklublari from '../../assets/events/ayollarklublari.jpg';
 import chess from '../../assets/events/chess.jpg';
 import football from '../../assets/events/football.jpg';
+import jahonchampfan from '../../assets/events/Jahonchempianatimuxlisi.jpg';
 import kibersport from '../../assets/events/kibersport.png';
 import mutoala from '../../assets/events/mutoala.jpg';
+import sportvazirligi from '../../assets/events/sportvazirligi.jpg';
 import valleyball from '../../assets/events/valleyball.jpg';
+import zominultramarafon from '../../assets/events/zominultramarafon.jpg';
 
 // One photo per event. Titles are working drafts; final titles + descriptions
 // (desc currently empty so no caption line shows) come from the client.
 const EVENTS = [
   { img: aihackaton, alt: 'AI500 hackathon', tag: { uz: 'Hakaton', ru: 'Хакатон' }, title: { uz: 'AI500 Hakaton', ru: 'Хакатон AI500' }, desc: { uz: '', ru: '' } },
+  { img: ayollarklublari, alt: "Women's club event", tag: { uz: 'Jamoa', ru: 'Сообщество' }, title: { uz: 'Ayollar klubi', ru: 'Женский клуб' }, desc: { uz: '', ru: '' } },
   { img: chess, alt: 'Chess tournament', tag: { uz: 'Sport', ru: 'Спорт' }, title: { uz: 'Shaxmat turniri', ru: 'Шахматный турнир' }, desc: { uz: '', ru: '' } },
   { img: football, alt: 'World Cup broadcast fan-zone', tag: { uz: 'Translyatsiya', ru: 'Трансляция' }, title: { uz: 'Jahon chempionati translyatsiyasi', ru: 'Трансляция Чемпионата мира' }, desc: { uz: '', ru: '' } },
+  { img: jahonchampfan, alt: 'National team support — Uzbekistan vs Colombia', tag: { uz: 'Muxlislar', ru: 'Болельщики' }, title: { uz: 'Terma jamoa muxlislari', ru: 'Болельщики сборной' }, desc: { uz: '', ru: '' } },
   { img: kibersport, alt: 'Cybersport FIFA tournament', tag: { uz: 'Kibersport', ru: 'Киберспорт' }, title: { uz: 'Kibersport turniri', ru: 'Киберспорт-турнир' }, desc: { uz: '', ru: '' } },
   { img: mutoala, alt: 'Mutolaa reading marathon', tag: { uz: 'Yoshlar', ru: 'Молодёжь' }, title: { uz: 'Mutolaa marafoni', ru: 'Марафон чтения Mutolaa' }, desc: { uz: '', ru: '' } },
+  { img: sportvazirligi, alt: 'Chimgan mountain festival', tag: { uz: 'Festival', ru: 'Фестиваль' }, title: { uz: "Chimgan tog' festivali", ru: 'Горный фестиваль Чимган' }, desc: { uz: '', ru: '' } },
   { img: valleyball, alt: 'Volleyball tournament', tag: { uz: 'Sport', ru: 'Спорт' }, title: { uz: 'Voleybol turniri', ru: 'Турнир по волейболу' }, desc: { uz: '', ru: '' } },
+  { img: zominultramarafon, alt: 'Zomin ultramarathon', tag: { uz: 'Sport', ru: 'Спорт' }, title: { uz: 'Zomin ultramarafoni', ru: 'Зоминский ультрамарафон' }, desc: { uz: '', ru: '' } },
 ];
 
 const INTERVAL = 3000;
