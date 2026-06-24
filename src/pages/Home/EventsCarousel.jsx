@@ -88,13 +88,13 @@ export default function EventsCarousel() {
             <img src={e.img} alt={e.alt} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
             <div className="absolute inset-x-0 bottom-0 px-5 pb-5 pt-12 md:px-8 md:pb-7 md:pt-16 bg-gradient-to-t from-black/65 via-black/20 to-transparent text-left">
               <span
-                className="inline-block text-[0.65rem] tracking-widest uppercase px-2.5 py-1 rounded-full mb-2 font-semibold"
+                className="inline-block text-[0.55rem] md:text-[0.7rem] tracking-widest uppercase px-2 py-0.5 md:px-2.5 md:py-1 rounded-full mb-1.5 md:mb-2 font-semibold"
                 style={{ backgroundColor: accent, color: '#0b0d12' }}
               >
                 {L(e.tag)}
               </span>
-              <h4 className="font-agro text-base md:text-3xl font-bold text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.9)]">{L(e.title)}</h4>
-              {L(e.desc) && <p className="text-xs md:text-lg text-white/90 mt-1 max-w-2xl leading-snug [text-shadow:0_1px_10px_rgba(0,0,0,0.95)]">{L(e.desc)}</p>}
+              <h4 className="font-agro text-sm md:text-3xl font-bold text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.9)]">{L(e.title)}</h4>
+              {L(e.desc) && <p className="text-[0.7rem] md:text-lg text-white/90 mt-0.5 md:mt-1 max-w-2xl leading-snug [text-shadow:0_1px_10px_rgba(0,0,0,0.95)]">{L(e.desc)}</p>}
             </div>
           </div>
         ))}
