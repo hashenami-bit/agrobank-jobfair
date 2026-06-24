@@ -14,18 +14,18 @@ import sportvazirligi from '../../assets/events/sportvazirligi.jpg';
 import valleyball from '../../assets/events/valleyball.jpg';
 import zominultramarafon from '../../assets/events/zominultramarafon.jpg';
 
-// One photo per event. Titles are working drafts; final titles + descriptions
-// (desc currently empty so no caption line shows) come from the client.
+// One photo per event. Captions are drafts based on photo context + research;
+// refine the wording anytime.
 const EVENTS = [
-  { img: aihackaton, alt: 'AI500 hackathon', tag: { uz: 'Hakaton', ru: 'Хакатон' }, title: { uz: 'AI500 Hakaton', ru: 'Хакатон AI500' }, desc: { uz: '', ru: '' } },
-  { img: ayollarklublari, alt: "Women's club event", tag: { uz: 'Jamoa', ru: 'Сообщество' }, title: { uz: 'Ayollar klubi', ru: 'Женский клуб' }, desc: { uz: '', ru: '' } },
-  { img: chess, alt: 'Chess tournament', tag: { uz: 'Sport', ru: 'Спорт' }, title: { uz: 'Shaxmat turniri', ru: 'Шахматный турнир' }, desc: { uz: '', ru: '' } },
-  { img: football, alt: 'World Cup broadcast fan-zone', tag: { uz: 'Translyatsiya', ru: 'Трансляция' }, title: { uz: 'Jahon chempionati translyatsiyasi', ru: 'Трансляция Чемпионата мира' }, desc: { uz: '', ru: '' } },
-  { img: jahonchampfan, alt: 'National team support — Uzbekistan vs Colombia', tag: { uz: 'Muxlislar', ru: 'Болельщики' }, title: { uz: 'Terma jamoa muxlislari', ru: 'Болельщики сборной' }, desc: { uz: '', ru: '' } },
-  { img: mutoala, alt: 'Mutolaa reading marathon', tag: { uz: 'Yoshlar', ru: 'Молодёжь' }, title: { uz: 'Mutolaa marafoni', ru: 'Марафон чтения Mutolaa' }, desc: { uz: '', ru: '' } },
-  { img: sportvazirligi, alt: 'Chimgan mountain festival', tag: { uz: 'Festival', ru: 'Фестиваль' }, title: { uz: "Chimgan tog' festivali", ru: 'Горный фестиваль Чимган' }, desc: { uz: '', ru: '' } },
-  { img: valleyball, alt: 'Volleyball tournament', tag: { uz: 'Sport', ru: 'Спорт' }, title: { uz: 'Voleybol turniri', ru: 'Турнир по волейболу' }, desc: { uz: '', ru: '' } },
-  { img: zominultramarafon, alt: 'Zomin ultramarathon', tag: { uz: 'Sport', ru: 'Спорт' }, title: { uz: 'Zomin ultramarafoni', ru: 'Зоминский ультрамарафон' }, desc: { uz: '', ru: '' } },
+  { img: aihackaton, alt: 'AI500 hackathon', tag: { uz: 'Hakaton', ru: 'Хакатон' }, title: { uz: 'AI500 Hakaton', ru: 'Хакатон AI500' }, desc: { uz: "Agrobank va IT Community hamkorligidagi mamlakatdagi eng yirik AI-hakaton — 500 mln so'm mukofot jamg'armasi bilan.", ru: 'Крупнейший AI-хакатон страны от Agrobank и IT Community с призовым фондом 500 млн сумов.' } },
+  { img: ayollarklublari, alt: "Women's club event", tag: { uz: 'Jamoa', ru: 'Сообщество' }, title: { uz: 'Ayollar klubi', ru: 'Женский клуб' }, desc: { uz: "Bank ayollar klubi a'zolarining ommaviy sport va sog'lomlashtirish tadbiridagi ishtiroki.", ru: 'Участницы женского клуба банка на массовом спортивно-оздоровительном мероприятии.' } },
+  { img: chess, alt: 'Chess tournament', tag: { uz: 'Sport', ru: 'Спорт' }, title: { uz: 'Shaxmat turniri', ru: 'Шахматный турнир' }, desc: { uz: "Xodimlar o'rtasida o'tkazilgan shaxmat turniri.", ru: 'Шахматный турнир среди сотрудников банка.' } },
+  { img: football, alt: 'World Cup broadcast fan-zone', tag: { uz: 'Translyatsiya', ru: 'Трансляция' }, title: { uz: 'Jahon chempionati translyatsiyasi', ru: 'Трансляция Чемпионата мира' }, desc: { uz: 'Agrobank homiyligida Jahon chempionati translyatsiyasi va jonkuyarlar zonasi.', ru: 'Трансляция Чемпионата мира и фан-зона при поддержке Agrobank.' } },
+  { img: jahonchampfan, alt: 'National team support — Uzbekistan vs Colombia', tag: { uz: 'Muxlislar', ru: 'Болельщики' }, title: { uz: 'Terma jamoa muxlislari', ru: 'Болельщики сборной' }, desc: { uz: "Bosh ofisda O'zbekiston terma jamoasini Jahon chempionatida birgalikda qo'llab-quvvatlash.", ru: 'Совместная поддержка сборной Узбекистана на Чемпионате мира в головном офисе.' } },
+  { img: mutoala, alt: 'Mutolaa reading marathon', tag: { uz: 'Yoshlar', ru: 'Молодёжь' }, title: { uz: 'Mutolaa marafoni', ru: 'Марафон чтения Mutolaa' }, desc: { uz: "Yoshlar bilan 'Mutolaa' kitobxonlik marafoni doirasidagi uchrashuv.", ru: 'Встреча в рамках марафона чтения «Mutolaa» с молодёжью.' } },
+  { img: sportvazirligi, alt: 'Chimgan mountain festival', tag: { uz: 'Festival', ru: 'Фестиваль' }, title: { uz: "Chimgan tog' festivali", ru: 'Горный фестиваль Чимган' }, desc: { uz: "Sport vazirligi tashkil etgan Chimgan tog' festivalida bank jamoasi ishtiroki.", ru: 'Команда банка на горном фестивале «Чимган» от Министерства спорта.' } },
+  { img: valleyball, alt: 'Volleyball tournament', tag: { uz: 'Sport', ru: 'Спорт' }, title: { uz: 'Voleybol turniri', ru: 'Турнир по волейболу' }, desc: { uz: 'Agrobank kubogi doirasida voleybol turniri.', ru: 'Турнир по волейболу в рамках кубка Agrobank.' } },
+  { img: zominultramarafon, alt: 'Zomin ultramarathon', tag: { uz: 'Sport', ru: 'Спорт' }, title: { uz: 'Zomin ultramarafoni', ru: 'Зоминский ультрамарафон' }, desc: { uz: "Bank jamoasining Zomin ultramarafonidagi ishtiroki va sovrinlari.", ru: 'Участие команды банка в Зоминском ультрамарафоне.' } },
 ];
 
 const INTERVAL = 3000;
