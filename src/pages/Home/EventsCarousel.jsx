@@ -86,15 +86,15 @@ export default function EventsCarousel() {
             style={{ opacity: index === i ? 1 : 0, pointerEvents: index === i ? 'auto' : 'none' }}
           >
             <img src={e.img} alt={e.alt} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-            <div className="absolute inset-x-0 bottom-0 p-5 md:p-8 bg-gradient-to-t from-black/85 via-black/40 to-transparent text-left">
+            <div className="absolute inset-x-0 bottom-0 px-5 pb-5 pt-20 md:px-8 md:pb-7 md:pt-28 bg-gradient-to-t from-black via-black/75 to-transparent text-left">
               <span
-                className="inline-block text-[0.65rem] tracking-widest uppercase px-2.5 py-1 rounded-full mb-2"
-                style={{ backgroundColor: `${accent}22`, color: accent }}
+                className="inline-block text-[0.65rem] tracking-widest uppercase px-2.5 py-1 rounded-full mb-2 font-semibold"
+                style={{ backgroundColor: accent, color: '#0b0d12' }}
               >
                 {L(e.tag)}
               </span>
-              <h4 className="font-agro text-lg md:text-2xl font-bold text-white">{L(e.title)}</h4>
-              {L(e.desc) && <p className="text-sm md:text-base text-white/70 mt-1 max-w-xl">{L(e.desc)}</p>}
+              <h4 className="font-agro text-xl md:text-3xl font-bold text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.9)]">{L(e.title)}</h4>
+              {L(e.desc) && <p className="text-sm md:text-lg text-white/90 mt-1.5 max-w-2xl leading-snug [text-shadow:0_1px_10px_rgba(0,0,0,0.95)]">{L(e.desc)}</p>}
             </div>
           </div>
         ))}
