@@ -86,7 +86,7 @@ export default function EventsCarousel() {
             style={{ opacity: index === i ? 1 : 0, pointerEvents: index === i ? 'auto' : 'none' }}
           >
             <img src={e.img} alt={e.alt} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-            <div className="absolute inset-x-0 bottom-0 px-5 pb-5 pt-12 md:px-8 md:pb-7 md:pt-16 bg-gradient-to-t from-black/65 via-black/20 to-transparent text-left">
+            <div className="absolute top-3 left-3 md:top-5 md:left-5 max-w-[78%] md:max-w-md rounded-xl bg-black/45 backdrop-blur-sm px-3 py-2.5 md:px-5 md:py-4 text-left">
               <span
                 className="inline-block text-[0.55rem] md:text-[0.7rem] tracking-widest uppercase px-2 py-0.5 md:px-2.5 md:py-1 rounded-full mb-1.5 md:mb-2 font-semibold"
                 style={{ backgroundColor: accent, color: '#0b0d12' }}
