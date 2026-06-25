@@ -36,16 +36,19 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Storage not configured' });
   }
 
-  // Throttle repeated failed logins per client IP.
+  // Per-IP throttle: only wrong guesses count, so the correct password is
+  // never locked out — even after many failures.
   const ip = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
   const rlId = `login:${ip}`;
-  if ((await rateLimitCount(rlId)) >= MAX_ATTEMPTS) {
-    res.setHeader('Retry-After', String(WINDOW_SEC));
-    return res.status(429).json({ error: "Juda ko'p urinish. 15 daqiqadan so'ng qayta urinib ko'ring." });
-  }
 
   const { user, password } = req.body || {};
-  if (!safeEqual(user, adminUser) || !safeEqual(password, adminPassword)) {
+  const valid = safeEqual(user, adminUser) && safeEqual(password, adminPassword);
+
+  if (!valid) {
+    if ((await rateLimitCount(rlId)) >= MAX_ATTEMPTS) {
+      res.setHeader('Retry-After', String(WINDOW_SEC));
+      return res.status(429).json({ error: "Juda ko'p urinish. 15 daqiqadan so'ng qayta urinib ko'ring." });
+    }
     await rateLimitHit(rlId, WINDOW_SEC);
     return res.status(401).json({ error: 'Invalid credentials' });
   }
