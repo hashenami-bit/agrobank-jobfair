@@ -6,11 +6,16 @@ import { useLanguage } from '../../contexts/LanguageContext';
 
 import aihackaton from '../../assets/events/aihackaton.webp';
 import ayollarklublari from '../../assets/events/ayollarklublari.jpg';
+import boshtranslyatsiya from '../../assets/events/boshtrasnslyatsiyaxomiysiagrobank.png';
 import chess from '../../assets/events/chess.jpg';
+import cstournament from '../../assets/events/cstournament.png';
 import football from '../../assets/events/football.jpg';
+import futballgame from '../../assets/events/futballgameinagrobank.jpg';
 import jahonchampfan from '../../assets/events/Jahonchempianatimuxlisi.jpg';
 import mutoala from '../../assets/events/mutoala.jpg';
 import sportvazirligi from '../../assets/events/sportvazirligi.jpg';
+import tabletennis from '../../assets/events/tabletennisinagrobank.jpg';
+import uzbekgirlworldcup from '../../assets/events/uzbekgirlinworldcup.png';
 import valleyball from '../../assets/events/valleyball.jpg';
 import zominultramarafon from '../../assets/events/zominultramarafon.jpg';
 
@@ -26,6 +31,11 @@ const EVENTS = [
   { img: sportvazirligi, alt: 'Chimgan mountain festival', tag: { uz: 'Festival', ru: 'Фестиваль' }, title: { uz: "Chimgan tog' festivali", ru: 'Горный фестиваль Чимган' }, desc: { uz: "Sport vazirligi tashkil etgan Chimgan tog' festivalida bank jamoasi ishtiroki.", ru: 'Команда банка на горном фестивале «Чимган» от Министерства спорта.' } },
   { img: valleyball, alt: 'Volleyball tournament', tag: { uz: 'Sport', ru: 'Спорт' }, title: { uz: 'Voleybol turniri', ru: 'Турнир по волейболу' }, desc: { uz: 'Agrobank kubogi doirasida voleybol turniri.', ru: 'Турнир по волейболу в рамках кубка Agrobank.' } },
   { img: zominultramarafon, alt: 'Zomin ultramarathon', tag: { uz: 'Sport', ru: 'Спорт' }, title: { uz: 'Zomin ultramarafoni', ru: 'Зоминский ультрамарафон' }, desc: { uz: "Bank jamoasining Zomin ultramarafonidagi ishtiroki va sovrinlari.", ru: 'Участие команды банка в Зоминском ультрамарафоне.' } },
+  { img: boshtranslyatsiya, alt: 'Agrobank scarf at the World Cup stadium', tag: { uz: 'Homiylik', ru: 'Спонсорство' }, title: { uz: 'Bosh translyatsiya homiysi', ru: 'Главный спонсор трансляции' }, desc: { uz: "Agrobank — Jahon chempionati translyatsiyasining bosh homiysi; muxlislar stadionda bank sharfi bilan.", ru: 'Agrobank — главный спонсор трансляции Чемпионата мира; болельщики на стадионе с шарфом банка.' } },
+  { img: uzbekgirlworldcup, alt: "Uzbekistan flag at the World Cup fan-zone", tag: { uz: 'Muxlislar', ru: 'Болельщики' }, title: { uz: "O'zbekiston bayrog'i Jahon chempionatida", ru: 'Флаг Узбекистана на Чемпионате мира' }, desc: { uz: "Bank jamoasi vakili Jahon chempionati jonkuyarlar zonasida O'zbekiston bayrog'i bilan.", ru: 'Представительница команды банка с флагом Узбекистана в фан-зоне Чемпионата мира.' } },
+  { img: tabletennis, alt: 'Table tennis match in the office', tag: { uz: 'Sport', ru: 'Спорт' }, title: { uz: 'Stol tennisi', ru: 'Настольный теннис' }, desc: { uz: "Bosh ofis sport zonasida xodimlar o'rtasidagi stol tennisi o'yini.", ru: 'Партия в настольный теннис между сотрудниками в спортзоне головного офиса.' } },
+  { img: futballgame, alt: 'Mini-football match', tag: { uz: 'Sport', ru: 'Спорт' }, title: { uz: 'Mini-futbol o\'yini', ru: 'Мини-футбольный матч' }, desc: { uz: "Agrobank jamoasining mini-futbol bo'yicha do'stona o'yini.", ru: 'Товарищеский мини-футбольный матч команды Agrobank.' } },
+  { img: cstournament, alt: 'Esports CS tournament', tag: { uz: 'Kibersport', ru: 'Киберспорт' }, title: { uz: 'CS turniri', ru: 'Турнир по CS' }, desc: { uz: "Bank jamoasining Counter-Strike bo'yicha kibersport turniridagi ishtiroki.", ru: 'Участие команды банка в киберспортивном турнире по Counter-Strike.' } },
 ];
 
 const INTERVAL = 3000;
