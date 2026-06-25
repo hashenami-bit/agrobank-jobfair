@@ -1,7 +1,18 @@
 import crypto from 'node:crypto';
-import { redis, storageConfigured, tashkentDay } from './_redis.js';
+import {
+  redis,
+  storageConfigured,
+  tashkentDay,
+  rateLimitCount,
+  rateLimitHit,
+  rateLimitClear,
+} from './_redis.js';
 
 const DAYS = 14;
+
+// Brute-force protection: max failed logins per IP within the window.
+const MAX_ATTEMPTS = 8;
+const WINDOW_SEC = 15 * 60;
 
 function safeEqual(a, b) {
   const ab = Buffer.from(String(a ?? ''));
@@ -21,14 +32,26 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'ADMIN_PASSWORD is not set on the server' });
   }
 
-  const { user, password } = req.body || {};
-  if (!safeEqual(user, adminUser) || !safeEqual(password, adminPassword)) {
-    return res.status(401).json({ error: 'Invalid credentials' });
-  }
-
   if (!storageConfigured()) {
     return res.status(500).json({ error: 'Storage not configured' });
   }
+
+  // Throttle repeated failed logins per client IP.
+  const ip = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
+  const rlId = `login:${ip}`;
+  if ((await rateLimitCount(rlId)) >= MAX_ATTEMPTS) {
+    res.setHeader('Retry-After', String(WINDOW_SEC));
+    return res.status(429).json({ error: "Juda ko'p urinish. 15 daqiqadan so'ng qayta urinib ko'ring." });
+  }
+
+  const { user, password } = req.body || {};
+  if (!safeEqual(user, adminUser) || !safeEqual(password, adminPassword)) {
+    await rateLimitHit(rlId, WINDOW_SEC);
+    return res.status(401).json({ error: 'Invalid credentials' });
+  }
+
+  // Successful login — clear the failed-attempt counter for this IP.
+  await rateLimitClear(rlId);
 
   try {
     // Oldest -> newest, today last.
