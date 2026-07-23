@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 import { Target, Users, Layers, ChevronDown, RefreshCw } from 'lucide-react';
 import { useReveal } from '../../hooks/useReveal';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -98,30 +97,23 @@ function SprintCycle({ steps, centerSub, repeatLabel, accent }) {
         </div>
       </div>
 
-      {/* Mobile: vertical timeline with arrows + loop-back */}
-      <div className="md:hidden relative max-w-sm mx-auto">
+      {/* Mobile: compact vertical timeline with a connecting spine + loop-back */}
+      <div className="md:hidden relative max-w-sm mx-auto pl-1">
         <div
-          className="absolute left-[17px] top-5 bottom-5 w-px"
-          style={{ background: `linear-gradient(to bottom, ${accent}00, ${accent}55 12%, ${accent}55 88%, ${accent}00)` }}
+          className="absolute left-[19px] top-4 bottom-10 w-px"
+          style={{ background: `linear-gradient(to bottom, ${accent}00, ${accent}66 15%, ${accent}66 85%, ${accent}00)` }}
         ></div>
         {steps.map((step, i) => (
-          <div key={step.title}>
-            <div className="flex items-start gap-4 relative">
-              <div
-                className="w-9 h-9 rounded-full border shrink-0 flex items-center justify-center text-sm font-semibold text-white bg-[#0b0d12] relative z-10"
-                style={{ borderColor: accent, boxShadow: `0 0 14px ${accent}55` }}
-              >
-                {i + 1}
-              </div>
-              <div className="pt-1 pb-2">
-                <h5 className="text-white font-medium text-sm uppercase tracking-widest mb-1">{step.title}</h5>
-                <p className="text-[0.8rem] leading-relaxed font-light text-white/50">{step.desc}</p>
-              </div>
+          <div key={step.title} className="flex items-start gap-4 relative pb-6 last:pb-0">
+            <div
+              className="w-9 h-9 rounded-full border shrink-0 flex items-center justify-center text-sm font-semibold text-white bg-[#0b0d12] relative z-10"
+              style={{ borderColor: accent, boxShadow: `0 0 14px ${accent}55` }}
+            >
+              {i + 1}
             </div>
-            <div className="flex justify-start pl-[17px] py-1 relative z-10">
-              {i < steps.length - 1 ? (
-                <ChevronDown size={16} strokeWidth={2.5} className="-translate-x-1/2" style={{ color: `${accent}AA` }} />
-              ) : null}
+            <div className="pt-1">
+              <h5 className="text-white font-medium text-sm uppercase tracking-widest mb-1">{step.title}</h5>
+              <p className="text-[0.82rem] leading-relaxed font-light text-white/55">{step.desc}</p>
             </div>
           </div>
         ))}
@@ -133,96 +125,8 @@ function SprintCycle({ steps, centerSub, repeatLabel, accent }) {
           >
             <RefreshCw size={15} strokeWidth={2} className="animate-spin-slow" style={{ color: accent }} />
           </div>
-          <p className="text-[0.8rem] font-light text-white/45 italic">{repeatLabel}</p>
+          <p className="text-[0.82rem] font-light text-white/45 italic">{repeatLabel}</p>
         </div>
-      </div>
-    </>
-  );
-}
-
-// Mobile: horizontal snap carousel with dots. Desktop (md+): plain grid.
-function SnapRow({ items, renderItem, gridClass, accent }) {
-  const scrollRef = useRef(null);
-  const rafRef = useRef(0);
-  const [active, setActive] = useState(0);
-
-  // Depth effect: the card nearest the center is full-size and bright;
-  // cards drifting toward the edges scale down and dim.
-  const applyDepth = () => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const center = el.scrollLeft + el.clientWidth / 2;
-    let best = 0;
-    let bestDist = Infinity;
-    [...el.children].forEach((child, i) => {
-      const d = Math.abs(child.offsetLeft + child.offsetWidth / 2 - center);
-      if (d < bestDist) { bestDist = d; best = i; }
-      const n = Math.min(1, d / child.offsetWidth);
-      child.style.transform = `scale(${1 - 0.08 * n})`;
-      child.style.opacity = `${1 - 0.4 * n}`;
-    });
-    setActive(best);
-  };
-
-  const onScroll = () => {
-    if (rafRef.current) return;
-    rafRef.current = requestAnimationFrame(() => {
-      rafRef.current = 0;
-      applyDepth();
-    });
-  };
-
-  useEffect(() => {
-    applyDepth();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [items.length]);
-
-  const goTo = (i) => {
-    const el = scrollRef.current;
-    const child = el?.children[i];
-    if (!el || !child) return;
-    el.scrollTo({ left: child.offsetLeft - (el.clientWidth - child.offsetWidth) / 2, behavior: 'smooth' });
-  };
-
-  return (
-    <>
-      {/* Mobile: swipeable snap row — next card peeks from the edge */}
-      <div
-        ref={scrollRef}
-        onScroll={onScroll}
-        className="md:hidden flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 px-[11%] pt-4"
-        style={{
-          WebkitMaskImage: 'linear-gradient(to right, transparent, black 7%, black 93%, transparent)',
-          maskImage: 'linear-gradient(to right, transparent, black 7%, black 93%, transparent)',
-        }}
-      >
-        {items.map((item, i) => (
-          <div key={i} className="w-[78%] shrink-0 snap-center will-change-transform">
-            {renderItem(item, i)}
-          </div>
-        ))}
-      </div>
-      <div className="md:hidden flex items-center justify-center gap-2 mt-5">
-        {items.map((item, i) => (
-          <button
-            key={i}
-            type="button"
-            onClick={() => goTo(i)}
-            aria-label={item.title}
-            aria-current={active === i ? 'true' : undefined}
-            className="h-2 rounded-full transition-all duration-300 cursor-pointer"
-            style={{ width: active === i ? 28 : 8, backgroundColor: active === i ? accent : 'rgba(255,255,255,0.25)' }}
-          />
-        ))}
-      </div>
-
-      {/* Desktop: original grid */}
-      <div className={`hidden md:grid ${gridClass}`}>
-        {items.map((item, i) => (
-          <div key={i} className="h-full">
-            {renderItem(item, i)}
-          </div>
-        ))}
       </div>
     </>
   );
@@ -239,6 +143,7 @@ export default function AgileSection({ accent }) {
   const rhythm = t('agile.rhythm') || [];
   const values = t('agile.values') || [];
 
+  // Desktop card renderers (unchanged look).
   const renderStructure = (s, i) => {
     const Icon = structureIcons[i] ?? Target;
     return (
@@ -288,15 +193,50 @@ export default function AgileSection({ accent }) {
         </p>
       </div>
 
-      {/* Structure cards: Tribe / Team / Chapter */}
-      <div ref={structuresRef} className="max-w-6xl mx-auto holodex-container">
-        <div className="-mx-6 md:mx-0 pt-6 clip-slide delay-200">
-          <SnapRow
-            items={structures}
-            renderItem={renderStructure}
-            gridClass="grid-cols-3 gap-6"
-            accent={accent}
-          />
+      {/* Structure: Tribe / Team / Chapter */}
+      <div ref={structuresRef} className="max-w-6xl mx-auto">
+        {/* Mobile: layered vertical stack (faithful to the cookbook's 3-layer org diagram) */}
+        <div className="md:hidden relative max-w-md mx-auto clip-slide delay-100">
+          <div
+            className="absolute left-[31px] top-8 bottom-8 w-px"
+            style={{ background: `linear-gradient(to bottom, ${accent}00, ${accent}55, ${accent}00)` }}
+          ></div>
+          <div className="space-y-3">
+            {structures.map((s, i) => {
+              const Icon = structureIcons[i] ?? Target;
+              return (
+                <div
+                  key={s.title}
+                  className={`relative flex items-start gap-4 p-4 ${cardRadius} border border-white/5 skeuo-card`}
+                >
+                  <div
+                    className="w-12 h-12 rounded-2xl border shrink-0 flex items-center justify-center bg-[#0b0d12] relative z-10"
+                    style={{ borderColor: `${accent}55`, boxShadow: `0 0 16px ${accent}33` }}
+                  >
+                    <Icon size={22} strokeWidth={1.6} style={{ color: accent }} />
+                  </div>
+                  <div className="min-w-0 pt-0.5">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h4 className="text-white font-medium text-lg tracking-tight">{s.title}</h4>
+                      <span className="text-[0.5rem] tracking-widest uppercase px-1.5 py-0.5 rounded-full border" style={{ color: accent, borderColor: `${accent}44` }}>
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                    <p className="text-[0.82rem] leading-relaxed font-light text-white/55">{s.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Desktop: 3-column grid */}
+        <div className="hidden md:grid grid-cols-3 gap-6 pt-6">
+          {structures.map((s, i) => (
+            <div key={s.title} className="h-full">
+              {renderStructure(s, i)}
+            </div>
+          ))}
         </div>
       </div>
 
@@ -307,19 +247,38 @@ export default function AgileSection({ accent }) {
             {t('agile.rolesHeading')}
           </h4>
         </div>
-        <div className="-mx-6 md:mx-0 clip-slide delay-200">
-          <SnapRow
-            items={roles}
-            renderItem={renderRole}
-            gridClass="md:grid-cols-3 lg:grid-cols-5 gap-4"
-            accent={accent}
-          />
+
+        {/* Mobile: clean scannable list in one container */}
+        <div className="md:hidden max-w-md mx-auto rounded-3xl border border-white/5 skeuo-card overflow-hidden divide-y divide-white/5 clip-slide delay-200">
+          {roles.map((r, i) => (
+            <div key={r.title} className="flex items-start gap-3.5 p-4">
+              <div
+                className="w-7 h-7 rounded-full border shrink-0 flex items-center justify-center text-[0.7rem] font-semibold mt-0.5"
+                style={{ color: accent, borderColor: `${accent}55` }}
+              >
+                {i + 1}
+              </div>
+              <div className="min-w-0">
+                <h5 className="text-white font-medium tracking-tight">{r.title}</h5>
+                <p className="text-[0.8rem] leading-relaxed font-light text-white/50 mt-0.5">{r.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop: grid */}
+        <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {roles.map((r, i) => (
+            <div key={r.title} className="h-full">
+              {renderRole(r, i)}
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Sprint rhythm + values */}
       <div ref={rhythmRef} className="max-w-6xl mx-auto mt-14 md:mt-20">
-        <div className="text-center mb-8 clip-slide delay-100">
+        <div className="text-center mb-8 md:mb-8 clip-slide delay-100">
           <h4 className="font-agro-expanded text-2xl md:text-3xl text-white font-bold tracking-tight">
             {t('agile.rhythmLabel')}
           </h4>
@@ -336,15 +295,24 @@ export default function AgileSection({ accent }) {
           />
         </div>
 
-        {/* Values chips */}
-        <div className="text-center clip-slide delay-300">
-          <div
-            className="inline-block mb-5 text-sm tracking-widest uppercase font-medium"
-            style={{ color: accent }}
-          >
+        {/* Values */}
+        <div className="clip-slide delay-300">
+          <div className="text-center mb-5 text-sm tracking-widest uppercase font-medium" style={{ color: accent }}>
             {t('agile.valuesLabel')}
           </div>
-          <div className="flex flex-wrap justify-center gap-3">
+
+          {/* Mobile: tidy 2-column grid of mini-cards */}
+          <div className="md:hidden grid grid-cols-2 gap-2.5 max-w-md mx-auto">
+            {values.map((v) => (
+              <div key={v.title} className="p-3.5 rounded-2xl border border-white/[0.08] bg-white/[0.03]">
+                <div className="text-white text-sm font-medium mb-1">{v.title}</div>
+                <div className="text-white/45 text-[0.72rem] leading-snug font-light">{v.desc}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop: chips */}
+          <div className="hidden md:flex flex-wrap justify-center gap-3">
             {values.map((v) => (
               <div
                 key={v.title}
