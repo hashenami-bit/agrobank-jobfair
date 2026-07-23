@@ -8,6 +8,7 @@ import durdonaPhoto from '../../assets/recruiters/durdona.jpeg';
 import elyorPhoto from '../../assets/recruiters/elyor.jpeg';
 import RecruiterModal from '../../components/RecruiterModal';
 import FAQ from '../../components/FAQ';
+import AgileSection from './AgileSection';
 import { useSlide } from '../../contexts/SlideContext';
 import { useLanguage } from '../../contexts/LanguageContext';
 
@@ -310,6 +311,9 @@ export default function Vacancies() {
 
         </div>
       </div>
+
+      {/* Agile culture — how we work (general, cookbook-derived) */}
+      <AgileSection accent={accent} />
 
       <FAQ faqs={careerFaqs} accent={accent} label={t('vacancies.faqLabel')} heading={t('common.faqHeading')} />
 
