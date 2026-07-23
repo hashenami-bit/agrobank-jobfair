@@ -18,18 +18,30 @@ export default function Navbar() {
   const resetToHome = () => goToSlide(0);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    let raf = 0;
+    const handleScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        setScrolled(window.scrollY > 20);
+      });
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (
+    // Height stays constant; the tall top padding scrolls out of view via the
+    // negative sticky offset: top = -(88px pad-top - 12px kept visible) = -76px.
     <nav className={clsx(
-      "relative md:sticky md:top-0 w-full max-w-7xl px-6 flex flex-wrap items-center justify-between z-50 transition-all duration-300",
+      "relative md:sticky md:top-[-76px] w-full max-w-7xl px-6 pt-8 pb-2.5 md:pt-[88px] md:pb-4 flex flex-wrap items-center justify-between z-50 transition-[background-color,border-color,box-shadow] duration-300",
       scrolled
-        ? "py-3 bg-[#030303]/80 backdrop-blur-md border-b border-white/[0.1] shadow-lg"
-        : "pt-8 md:pt-[88px] pb-2.5 md:pb-4 bg-transparent border-b border-white/[0.05]"
+        ? "bg-[#030303]/80 backdrop-blur-md border-b border-white/[0.1] shadow-lg"
+        : "bg-transparent border-b border-white/[0.05]"
     )}>
       {/* Corner Brackets */}
       <div className={clsx(
